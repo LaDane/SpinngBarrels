@@ -29,4 +29,6 @@
 
 [node name="WallTiles" type="TileMap"]
 tile_set = SubResource( 1 )
+collision_layer = 2
+collision_mask = 13
 format = 1
