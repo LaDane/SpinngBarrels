@@ -3,8 +3,8 @@
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/soldier1_gun.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 25.5987
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 12.7423
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 14
@@ -14,7 +14,11 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -7.99347, 0.210972 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="GunPosition" type="Position2D" parent="."]
+position = Vector2( 27.2639, 10.2085 )

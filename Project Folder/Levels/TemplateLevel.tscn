@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Tiles/Walls and Floors/FloorTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tiles/Walls and Floors/WallTiles.tscn" type="PackedScene" id=2]
@@ -7,8 +7,19 @@
 [ext_resource path="res://Tiles/Plants and Trees/PlantsAndTrees.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Tiles/Furniture/Furniture.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Tiles/Walls and Floors/FloorTiles2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/Enemies/Zombie.tscn" type="PackedScene" id=8]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 1149.09, 256.423, 1009.5, 258.105, 1009.5, 9.19989, 1152.45, -140.48, -75.2544, -128.707, 10.5171, 14.2452, -78.618, 777.779, 13.8806, 624.736, 1165.91, 774.416, 1017.91, 633.145, 1149.09, 370.785, 1016.23, 372.467 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5 ), PoolIntArray( 6, 4, 5, 7 ), PoolIntArray( 8, 6, 7, 9 ), PoolIntArray( 10, 8, 9, 11 ) ]
+outlines = [ PoolVector2Array( 1009.5, 9.19989, 1009.5, 258.105, 1149.09, 256.423, 1152.45, -140.48, -75.2544, -128.707, -78.618, 777.779, 1165.91, 774.416, 1149.09, 370.785, 1016.23, 372.467, 1017.91, 633.145, 13.8806, 624.736, 10.5171, 14.2452 ) ]
 
 [node name="TemplateLevel" type="Node2D"]
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 1 )
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -38,3 +49,15 @@ tile_data = PoolIntArray( 4, 1610612744, 0, 9, 1610612744, 0, 524303, -161061273
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 456.346, 301.902 )
+compass_controls = true
+face_mouse_control = false
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Zombie" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 1480.64, 225.257 )
+speed = 100
+
+[node name="Zombie2" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 1360.48, 144.439 )
+speed = 100

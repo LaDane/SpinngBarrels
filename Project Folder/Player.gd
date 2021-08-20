@@ -7,6 +7,8 @@ var speed = 200
 var velocity = Vector2.ZERO
 var gun_position
 
+var projectile = preload("res://Weapons/Projectile/Projectile.tscn")
+
 func _ready():
 	gun_position = get_node("GunPosition")
 
@@ -36,8 +38,10 @@ func get_input():
 		velocity = velocity.normalized() * speed
 
 
-#func fire_weapon():
-	
+func fire_weapon():
+	var projectile_object = projectile.instance()
+	projectile_object.start($GunPosition.global_position, rotation)
+	get_parent().add_child(projectile_object)
 
 
 func _physics_process(delta):
@@ -49,5 +53,5 @@ func _physics_process(delta):
 	if compass_controls:
 		velocity = move_and_slide(velocity)
 		
-#    if Input.is_action_pressed("shoot"):
-#        fire_weapon()
+	if Input.is_action_just_pressed("shoot"):
+		fire_weapon()

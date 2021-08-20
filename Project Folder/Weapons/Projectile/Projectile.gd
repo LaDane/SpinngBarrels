@@ -23,6 +23,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		print("collision")
+		queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	print("destroyed")
