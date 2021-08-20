@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Tiles/OutdoorFloorTiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Tiles/Walls and Floors/OutdoorFloorTiles.tres" type="TileSet" id=1]
 
 [node name="OutdoorFloorTiles" type="TileMap"]
 scale = Vector2( 2, 2 )
