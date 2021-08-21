@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Weapons/MuzzleFlash/muzzle_flash_small.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.32614, 2.38578 )
+extents = Vector2( 7.4704, 3.53503 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -26,12 +26,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4.94585, 0 )
+position = Vector2( 6.33639, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 4.94027, 0 )
-scale = Vector2( 0.976005, 1.06172 )
+position = Vector2( 6.2646, 0 )
+scale = Vector2( 1.52324, 1.63581 )
 texture = ExtResource( 3 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

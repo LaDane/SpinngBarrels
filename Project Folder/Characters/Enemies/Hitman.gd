@@ -1,6 +1,6 @@
 extends "res://Characters/Enemies/EnemyBaseScript.gd"
 
-var pistol_projectile_scene = preload("res://Weapons/Projectile/PistolProjetile.tscn")
+var pistol_projectile_scene = preload("res://Characters/Enemies/HitmanProjectile.tscn")
 
 func _ready():
 	speed = 100
