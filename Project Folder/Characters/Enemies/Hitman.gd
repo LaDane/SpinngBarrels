@@ -1,26 +1,41 @@
-extends KinematicBody2D
+extends "res://Characters/Enemies/EnemyBaseScript.gd"
 
-onready var Playerpos = get_node("../Player")
-export var speed = 200
-var motion = Vector2()
-onready var path_to_destination
-onready var player_position = Playerpos.get_global_position()
-onready var map_navigation = get_parent().get_node("Navigation2D")
-onready var destination = map_navigation.get_closest_point(player_position)
+var pistol_projectile_scene = preload("res://Weapons/Projectile/PistolProjetile.tscn")
 
-
-const UP = Vector2(0,0)
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	speed = 100
+	health = 100
+	attack_damage = 20
+	reload_time = 2
+	attack_distance = 200
+	
+	set_reload_time(reload_time)
+
 
 func _physics_process(delta):
-	movement()
+	check_range()
 
-func movement():
-	var direction = (Playerpos.position - position).normalized()
-	motion = direction * speed
-	look_at(Playerpos.global_position)
-	move_and_slide(motion, UP, false)
+
+func check_range():
+	if player_visible:
+		if (global_position.distance_to(Player.global_position)) <= attack_distance:
+			speed = 0
+			if weapon_ready:
+				fire_weapon();
+				weapon_ready = false
+		else:
+			speed = 120
+
+
+func fire_weapon():
+	var projectile_object
+	projectile_object = pistol_projectile_scene.instance()
+	$AudioWeapon.play(0.95)
+	
+	projectile_object.set_collision_layer_bit(4, false)
+	projectile_object.set_collision_layer_bit(5, true)
+	projectile_object.set_collision_mask_bit(2, false)
+
+	projectile_object.start($RotationNode/Position2D.global_position, $RotationNode.rotation)
+
+	get_parent().add_child(projectile_object)

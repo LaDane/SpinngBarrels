@@ -41,9 +41,18 @@ tile_data = PoolIntArray( -131076, 3, 0, -131075, 3, 0, -131074, 3, 0, -131073, 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Zombie" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( 813.716, 125.443 )
+position = Vector2( -36.0217, 339.028 )
+
+[node name="Zombie2" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 214.012, 567.872 )
+
+[node name="Zombie3" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 423.785, 752.219 )
+
+[node name="Zombie4" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 303.006, -59.3298 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 373.884, 347.322 )
+position = Vector2( 445.413, 208.616 )
 compass_controls = true
 face_mouse_control = false

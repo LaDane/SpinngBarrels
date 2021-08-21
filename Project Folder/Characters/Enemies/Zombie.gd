@@ -1,63 +1,29 @@
-extends KinematicBody2D
-
-onready var Player = get_parent().get_parent().get_node("Player")
-export var speed = 100
-
-var direction = Vector2.ZERO
-var motion = Vector2()
-
-var attack_damage = 20
-var attack_interval = 2
-var waiting_to_attack = false
+extends "res://Characters/Enemies/EnemyBaseScript.gd"
 
 
 func _ready():
-	$Timer.wait_time = rand_range(0.1, 0.2)
-
-
-func chase_target():
-	var look = $RayCast2D
-	look.cast_to = (Player.position - position)
-	look.force_raycast_update()
+	speed = 40
+	health = 100
+	attack_damage = 20
+	reload_time = 2
 	
-	if !look.is_colliding():
-		direction = look.cast_to.normalized()
-		$Sprite.look_at(Player.position)
-		
-	else:
-		for scent in Player.scent_trail:
-			look.cast_to = (scent.position - position)
-			look.force_raycast_update()
-
-			
-			if !look.is_colliding():
-				direction = look.cast_to.normalized()
-				$Sprite.look_at(scent.position)
-				break
+	set_reload_time(reload_time)
 
 
 func _physics_process(delta):
-	motion = direction * speed
+	move_with_collision()
+
+
+func move_with_collision():
 	motion = move_and_slide(motion, Vector2(0,0))
-	
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision and collision.collider.has_method("take_damage") and !waiting_to_attack:
+		if collision and collision.collider.has_method("take_damage") and weapon_ready:
 			print("Ouch!")
 			collision.collider.take_damage(attack_damage)
-			waiting_to_attack = true
-			$AttackInterval.wait_time = attack_interval
-			$AttackInterval.start()
-		
-
-func _on_Timer_timeout():
-		chase_target()
-
-
-func _on_AttackInterval_timeout():
-	waiting_to_attack = false
-
-
+			weapon_ready = false
+			$ReloadTime.wait_time = reload_time
+			$ReloadTime.start()
 
 
 
