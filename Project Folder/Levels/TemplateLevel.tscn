@@ -49,8 +49,6 @@ tile_data = PoolIntArray( 4, 1610612744, 0, 9, 1610612744, 0, 524303, -161061273
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 456.346, 301.902 )
-compass_controls = true
-face_mouse_control = false
 
 [node name="Enemies" type="Node2D" parent="."]
 
