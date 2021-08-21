@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/WeaponWheel/Background.png" type="Texture" id=1]
 [ext_resource path="res://Assets/WeaponWheel/smg.PNG" type="Texture" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/WeaponWheel/highlight.png" type="Texture" id=9]
 [ext_resource path="res://Assets/DamageGrunge/damge_anim1.png" type="Texture" id=14]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "take_damage"
 length = 0.5
 tracks/0/type = "value"
@@ -27,6 +27,9 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 0.980392, 0.462745, 0.462745, 0.356863 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0, 0, 1 )
+
 [node name="Interface" type="CanvasLayer"]
 layer = 99
 
@@ -41,7 +44,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
-anims/take_damage = SubResource( 2 )
+anims/take_damage = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -135,3 +138,21 @@ position = Vector2( 511.03, 494.002 )
 scale = Vector2( 0.103226, 0.117569 )
 z_index = 1
 texture = ExtResource( 3 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer2"]
+margin_right = 1024.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/fg = SubResource( 2 )
+custom_colors/font_color = Color( 0.298039, 0.172549, 0.172549, 0 )
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

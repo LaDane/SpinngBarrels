@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/AnimWalk/soldier_walk1.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Assets/Player/AnimDeath/soldier_dead4.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Player/AnimDeath/soldier_dead5.png" type="Texture" id=20]
 [ext_resource path="res://Interface.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Characters/Player/Camera2D.gd" type="Script" id=22]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.7423
@@ -56,8 +57,13 @@ current = true
 zoom = Vector2( 0.6, 0.6 )
 smoothing_enabled = true
 smoothing_speed = 4.0
+script = ExtResource( 22 )
 
 [node name="Interface" parent="Camera2D" instance=ExtResource( 21 )]
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+
+[node name="Tween" type="Tween" parent="Camera2D"]
 
 [node name="Arm" type="Position2D" parent="."]
 position = Vector2( 6.49838, 11.0503 )
@@ -98,5 +104,6 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="ChangeWeaponTimer" to="." method="_on_ChangeWeaponTimer_timeout"]

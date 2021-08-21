@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var compass_controls = false
 export var face_mouse_control = true
 
-export var health = 100
+export var health = 200
 var is_dead = false
 var movement_speed = 225
 var velocity = Vector2.ZERO
@@ -78,6 +78,8 @@ var scent_trail = []
 
 func _ready():
 	$ScentTimer.connect("timeout", self, "add_scent")
+	$Camera2D/Interface/VBoxContainer2/ProgressBar.max_value = health
+	$Camera2D/Interface/VBoxContainer2/ProgressBar.value = health
 	
 	randomize()
 	gun_rotation.shuffle()
@@ -170,6 +172,7 @@ func fire_weapon():
 		current_projectile_scene = assault_projectile_scene
 		shots_in_mag = assault_shots_in_mag
 		$GunTimer.wait_time = assault_fire_interval
+		Globals.camera.shake(75, 0.5, 75)
 		
 	elif current_gun == "laser":
 		$AudioLaser.play(2.79)
@@ -178,10 +181,12 @@ func fire_weapon():
 	elif current_gun == "pistol":
 		$AudioPistol.play(0.95)
 		current_projectile_scene = pistol_projectile_scene
+		Globals.camera.shake(40, 0.5, 15)
 		
 	elif current_gun == "rocket_launcher":
 		$AudioRocketLauncher.play(0.98)
 		current_projectile_scene = rocket_launcher_projectile_scene
+		Globals.camera.shake(300, 0.5, 300)
 		
 	elif current_gun == "shotgun":
 		$AudioShotgun.play(1.0)
@@ -189,6 +194,7 @@ func fire_weapon():
 		shots_in_mag = shotgun_shots_in_mag
 		$GunTimer.wait_time = shotgun_fire_interval
 		use_spread = true
+		Globals.camera.shake(100, 0.5, 100)
 		
 	elif current_gun == "smg":
 		$AudioSMG.play(1.0)
@@ -196,10 +202,12 @@ func fire_weapon():
 		shots_in_mag = smg_shots_in_mag
 		$GunTimer.wait_time = smg_fire_interval
 		use_spread = true
+		Globals.camera.shake(75, 1, 75)
 		
 	elif current_gun == "sniper":
 		$AudioSniper.play(0.98)
 		current_projectile_scene = sniper_projectile_scene
+		Globals.camera.shake(300, 0.5, 300)
 		
 	spawn_projectile()
 
@@ -269,6 +277,8 @@ func remove_weapon():
 func take_damage(dmg):
 	health = health - dmg
 	$Camera2D/Interface/TextureRect/AnimationPlayer.play("take_damage")
+	Globals.camera.shake(300, 0.5, 300)
+	$Camera2D/Interface/VBoxContainer2/ProgressBar.value = health
 	if health <= 0 and is_dead == false:
 		player_die()
 
@@ -281,6 +291,7 @@ func player_die():
 		$AnimatedSprite.stop()
 		
 	$AnimatedSprite.play("dead")
+	z_index = 0
 	print("You have died")
 
 

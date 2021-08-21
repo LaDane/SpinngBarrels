@@ -14,6 +14,10 @@ config/name="Kenney Jam 2021"
 run/main_scene="res://Levels/Level1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Globals.gd"
+
 [display]
 
 mouse_cursor/custom_image="res://Assets/Weapons/crossair_black.png"

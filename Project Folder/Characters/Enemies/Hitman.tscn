@@ -5,7 +5,7 @@
 [ext_resource path="res://SFX/SFX_guns/Kenney gun sound export Pistol Fire.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 15.7368
+radius = 13.6673
 
 [sub_resource type="Animation" id=2]
 resource_name = "hit_animation"
