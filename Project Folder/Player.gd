@@ -5,7 +5,7 @@ export var face_mouse_control = true
 
 export var health = 100
 var is_dead = false
-var movement_speed = 200
+var movement_speed = 225
 var velocity = Vector2.ZERO
 
 var gun_rotation = ["assault", "laser", "pistol", "rocket_launcher", "shotgun", "smg", "sniper"]

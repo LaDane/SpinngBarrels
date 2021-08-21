@@ -6,8 +6,8 @@ func _ready():
 	speed = 100
 	health = 100
 	attack_damage = 20
-	reload_time = 2
-	attack_distance = 200
+	reload_time = 1
+	attack_distance = 350
 	
 	set_reload_time(reload_time)
 

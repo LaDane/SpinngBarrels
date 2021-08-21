@@ -2,9 +2,9 @@ extends "res://Characters/Enemies/EnemyBaseScript.gd"
 
 
 func _ready():
-	speed = 40
+	speed = 70
 	health = 100
-	attack_damage = 20
+	attack_damage = 34
 	reload_time = 2
 	
 	set_reload_time(reload_time)
