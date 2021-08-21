@@ -39,6 +39,20 @@ var rocket_launcher_projectile_scene = preload("res://Weapons/Projectile/RocketP
 var sniper_projectile_scene = preload("res://Weapons/Projectile/SniperProjectile.tscn")
 var current_projectile_scene
 
+# Gun sprites
+var assault_sprite
+var laser_sprite
+var pistol_sprite
+var rocket_sprite
+var shotgun_sprite
+var smg_sprite
+var sniper_sprite
+
+# Weapon wheel
+var weapon_wheel_sprite
+var weapon_wheel_positions
+var visible_wheel_positions = [4, 5, 0, 1, 2]
+
 # Gun fire interval
 var weapon_firing = false
 var use_spread = false
@@ -57,6 +71,7 @@ var smg_fire_interval = 0.08
 var shotgun_shots_in_mag = 5
 var shotgun_fire_interval = 0.01
 
+
 const scent_scene = preload("res://Characters/Player/Scent.tscn")
 var scent_trail = []
 
@@ -67,6 +82,25 @@ func _ready():
 	randomize()
 	gun_rotation.shuffle()
 	change_weapon(gun_rotation[current_gun_rotation])
+	
+	# Weapon wheel assign shit
+	assault_sprite = $Camera2D/Interface/assault
+	laser_sprite = $Camera2D/Interface/laser
+	pistol_sprite = $Camera2D/Interface/pistol
+	rocket_sprite = $Camera2D/Interface/rocket
+	shotgun_sprite = $Camera2D/Interface/shotgun
+	smg_sprite = $Camera2D/Interface/smg
+	sniper_sprite = $Camera2D/Interface/sniper
+	
+	var pos0 = $Camera2D/Interface/VBoxContainer/WeaponWheel/Pos0
+	var pos1 = $Camera2D/Interface/VBoxContainer/WeaponWheel/Pos1
+	var pos2 = $Camera2D/Interface/VBoxContainer/WeaponWheel/Pos2
+	var pos3 = $Camera2D/Interface/VBoxContainer/WeaponWheel/Pos3
+	var pos4 = $Camera2D/Interface/VBoxContainer/WeaponWheel/Pos4
+	var pos5 = $Camera2D/Interface/VBoxContainer/WeaponWheel/Pos5
+	
+	weapon_wheel_positions = [pos0, pos1, pos2, pos3, pos4, pos5]
+	weapon_wheel_sprite = $Camera2D/Interface/VBoxContainer/WeaponWheel
 
 
 func add_scent():
@@ -82,6 +116,7 @@ func add_scent():
 
 func _physics_process(delta):
 	get_input()
+	weapon_wheel_follow_pos()
 
 
 func get_input():
@@ -195,6 +230,8 @@ func next_gun_in_rotation():
 		current_gun_rotation = 0
 	change_weapon(gun_rotation[current_gun_rotation])
 	weapon_firing = false
+	
+	rotate_weapon_wheel()
 
 
 func change_weapon(selected_gun):
@@ -245,8 +282,95 @@ func player_die():
 	print("You have died")
 
 
+#var weapon_wheel_rotations = 0
 
 
+func rotate_weapon_wheel():
+	var rotate_tween = $Camera2D/Interface/VBoxContainer/Tween
+	
+	for i in range(visible_wheel_positions.size()):
+		visible_wheel_positions[i] = visible_wheel_positions[i] - 1
+		if visible_wheel_positions[i] < 0:
+			visible_wheel_positions[i] = 5
+	print(visible_wheel_positions)
+			
+	rotate_tween.interpolate_property(weapon_wheel_sprite, "rotation_degrees", weapon_wheel_sprite.rotation_degrees, weapon_wheel_sprite.rotation_degrees + 60, 0.3, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	rotate_tween.start()
+	
+#	weapon_wheel.rotation_degrees = weapon_wheel.rotation_degrees + 60
+	
+
+func weapon_wheel_follow_pos():
+#	sprite.position = pos 
+	
+	# Current gun
+	var current_gun_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, 0))
+#	print("Current gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, 0)])
+		
+	# Next gun
+#	print(calculate_gun_rotation_index(current_gun_rotation, 1))
+#	print(gun_rotation[calculate_gun_rotation_index(current_gun_rotation, 1)])
+	
+	var next_gun_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, 1))
+#	print("Next gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, 1)])
+	
+	var next_gun2_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, 2))
+#	print("Next 2 gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, 2)])
+	
+	# Last gun
+	var last_gun_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, -1))
+#	print("Last gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, -1)])
+	
+	var last_gun2_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, -2))
+#	print("Last 2 gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, -2)])
+	
+	# ABOVE WORKS
+	
+#	gun_rotation[current_gun_rotation]
+#	visible_wheel_positions[2]
+
+#	for i in range(weapon_wheel_positions.size()):
+#		print(weapon_wheel_positions[i].global_position)
+#	print("--------------")
+
+	current_gun_sprite.global_position = weapon_wheel_positions[visible_wheel_positions[2]].global_position
+	next_gun_sprite.global_position = weapon_wheel_positions[visible_wheel_positions[1]].global_position
+	next_gun2_sprite.global_position = weapon_wheel_positions[visible_wheel_positions[0]].global_position
+	last_gun_sprite.global_position = weapon_wheel_positions[visible_wheel_positions[3]].global_position
+	last_gun2_sprite.global_position = weapon_wheel_positions[visible_wheel_positions[4]].global_position
+
+	current_gun_sprite.visible = true
+	next_gun_sprite.visible = true
+	next_gun2_sprite.visible = true
+#	last_gun_sprite.visible = true
+#	last_gun2_sprite.visible = true
 
 
+func calculate_gun_rotation_index(index, d):
+	var wat_math = index + d 
+	if wat_math >= 7:
+		wat_math = wat_math - 7
+	elif wat_math < 0:
+		wat_math = 7 + wat_math
+#	print(wat_math)
+	return wat_math
+
+	
+func get_weapon_sprite(gun_rotation_index):
+	if gun_rotation[gun_rotation_index] == "assault":
+		return assault_sprite
+	elif gun_rotation[gun_rotation_index] == "laser":
+		return laser_sprite
+	elif gun_rotation[gun_rotation_index] == "pistol":
+		return pistol_sprite
+	elif gun_rotation[gun_rotation_index] == "rocket_launcher":
+		return rocket_sprite
+	elif gun_rotation[gun_rotation_index] == "shotgun":
+		return shotgun_sprite
+	elif gun_rotation[gun_rotation_index] == "smg":
+		return smg_sprite
+	elif gun_rotation[gun_rotation_index] == "sniper":
+		return sniper_sprite
+	
+#var gun_rotation = ["assault", "laser", "pistol", "rocket_launcher", "shotgun", "smg", "sniper"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/AnimWalk/soldier_walk1.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Assets/Player/AnimDeath/soldier_dead3.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Player/AnimDeath/soldier_dead4.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Player/AnimDeath/soldier_dead5.png" type="Texture" id=20]
+[ext_resource path="res://Interface.tscn" type="PackedScene" id=21]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.7423
@@ -53,6 +54,8 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.6, 0.6 )
+
+[node name="Interface" parent="Camera2D" instance=ExtResource( 21 )]
 
 [node name="Arm" type="Position2D" parent="."]
 position = Vector2( 6.49838, 11.0503 )
