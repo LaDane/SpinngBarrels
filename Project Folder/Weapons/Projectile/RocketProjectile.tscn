@@ -32,7 +32,6 @@ position = Vector2( 41.4561, 0.396851 )
 shape = SubResource( 1 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-visible = false
 position = Vector2( -15.5879, -2.27374e-13 )
 rotation = -3.14159
 scale = Vector2( 1.58386, 0.84525 )
@@ -55,5 +54,8 @@ animation = "flash"
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="ExplosionPoint" type="Position2D" parent="."]
+position = Vector2( 73.0754, 0 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

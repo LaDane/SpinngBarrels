@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var direction
 var velocity = Vector2()
-var speed = 500
+var speed = 600
 var damage = 20
 #var on_ready = false
 

@@ -36,6 +36,7 @@ var assault_projectile_scene = preload("res://Weapons/Projectile/AssaultProjecti
 var laser_projectile_scene = preload("res://Weapons/Projectile/LaserProjectile.tscn")
 var pistol_projectile_scene = preload("res://Weapons/Projectile/PistolProjetile.tscn")
 var rocket_launcher_projectile_scene = preload("res://Weapons/Projectile/RocketProjectile.tscn")
+var sniper_projectile_scene = preload("res://Weapons/Projectile/SniperProjectile.tscn")
 var current_projectile_scene
 
 # Gun fire interval
@@ -44,11 +45,17 @@ var use_spread = false
 var shots_in_mag = 1
 var shots_fired = 0
 
+# Assault gun values
 var assault_shots_in_mag = 3
 var assault_fire_interval = 0.17
 
+# SMG gun values
 var smg_shots_in_mag = 10
 var smg_fire_interval = 0.08
+
+# Shotgun gun values
+var shotgun_shots_in_mag = 5
+var shotgun_fire_interval = 0.01
 
 const scent_scene = preload("res://Characters/Player/Scent.tscn")
 var scent_trail = []
@@ -144,6 +151,8 @@ func fire_weapon():
 	elif current_gun == "shotgun":
 		$AudioShotgun.play(1.0)
 		current_projectile_scene = pistol_projectile_scene
+		shots_in_mag = shotgun_shots_in_mag
+		$GunTimer.wait_time = shotgun_fire_interval
 		use_spread = true
 		
 	elif current_gun == "smg":
@@ -155,7 +164,7 @@ func fire_weapon():
 		
 	elif current_gun == "sniper":
 		$AudioSniper.play(0.98)
-		current_projectile_scene = pistol_projectile_scene
+		current_projectile_scene = sniper_projectile_scene
 		
 	spawn_projectile()
 

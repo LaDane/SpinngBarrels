@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Zombie sounds 2-Audio.wav-e5426e3d265345cc5724c19950bc783f.sample"
+
+[deps]
+
+source_file="res://SFX/SFX_zombies/Zombie sounds 2-Audio.wav"
+dest_files=[ "res://.import/Zombie sounds 2-Audio.wav-e5426e3d265345cc5724c19950bc783f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

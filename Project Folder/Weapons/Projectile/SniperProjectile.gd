@@ -2,10 +2,9 @@ extends KinematicBody2D
 
 var direction
 var velocity = Vector2()
-var speed = 600
-var rocket_whistle_sfx = preload("res://SFX/SFX_guns/Kenney gun sound export Rocket Whistle.wav")
-var explosion_scene = preload("res://Weapons/Projectile/RocketExplosion.tscn")
-var damage = 20
+var speed = 1000
+var damage = 100
+#var on_ready = false
 
 func start(pos, dir, spread):
 	if spread:
@@ -16,7 +15,6 @@ func start(pos, dir, spread):
 	rotation = dir
 	global_position = pos 
 	velocity = Vector2(speed, 0).rotated(rotation)
-	$Audio.play(1.0)
 
 
 func _ready():
@@ -32,12 +30,8 @@ func _physics_process(delta):
 		elif collision.get_collider().has_method("take_damage"):
 			collision.get_collider().take_damage(damage)
 		
-		var explosion_object = explosion_scene.instance()
-		get_parent().add_child(explosion_object)
-		explosion_object.position = $ExplosionPoint.global_position 
 		queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
-#	queue_free()
-	pass
+	queue_free()
 

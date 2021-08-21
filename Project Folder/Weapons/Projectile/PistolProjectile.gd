@@ -3,13 +3,13 @@ extends KinematicBody2D
 var direction
 var velocity = Vector2()
 var speed = 600
-var damage = 20
+var damage = 40
 #var on_ready = false
 
 func start(pos, dir, spread):
 	if spread:
 		randomize()
-		var spread_range = rand_range(-0.2, 0.2)
+		var spread_range = rand_range(-0.3, 0.3)
 		dir = dir + spread_range
 		
 	rotation = dir
