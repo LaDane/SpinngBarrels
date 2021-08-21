@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Weapons/MuzzleFlash/blank.png" type="Texture" id=1]
 [ext_resource path="res://Weapons/Projectile/RocketProjectile.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Weapons/Ammunition/rocket_launcher_rocket.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Weapons/MuzzleFlash/shotOrange.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Weapons/MuzzleFlash/shotLarge.png" type="Texture" id=5]
 [ext_resource path="res://SFX/SFX_guns/Kenney gun sound export Rocket Whistle.wav" type="AudioStream" id=6]
 
@@ -11,10 +12,10 @@ extents = Vector2( 35.8239, 6.73149 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ null, ExtResource( 1 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
 "loop": false,
 "name": "flash",
-"speed": 20.0
+"speed": 15.0
 } ]
 
 [node name="Projectile" type="KinematicBody2D"]
@@ -47,14 +48,12 @@ position = Vector2( 4.91632, 0 )
 scale = Vector2( 0.576908, 0.275886 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( 40.81, 0 )
 scale = Vector2( 3.17348, 4.34746 )
 frames = SubResource( 2 )
 animation = "flash"
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
-visible = false
 stream = ExtResource( 6 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
