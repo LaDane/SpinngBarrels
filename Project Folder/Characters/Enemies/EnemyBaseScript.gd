@@ -20,6 +20,10 @@ func _ready():
 	$Timer.wait_time = rand_range(0.5, 1)
 	
 	$ReloadTime.connect("timeout",self,"_on_ReloadTime_timeout") 
+	
+	
+#	direction = (Player.position - position).normalized()
+#	look_at(Player.position)
 
 
 func set_reload_time(reload_time):
@@ -72,6 +76,8 @@ func take_enemy_damage(dmg):
 	health = health - dmg
 	if health <= 0 and is_dead == false:
 		die()
+	else:
+		$AnimationPlayer.play("hit_animation")
 
 
 func die():
