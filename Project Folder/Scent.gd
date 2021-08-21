@@ -1,0 +1,14 @@
+extends Node2D
+
+var player
+
+#func _ready():
+#	$Timer.connect("timeout", self, "remove_scent")
+
+func _remove_scent():
+	player.scent_trail.erase(self)
+	queue_free()
+
+
+func _on_Timer_timeout():
+	_remove_scent()

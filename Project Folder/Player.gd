@@ -9,8 +9,23 @@ var velocity = Vector2.ZERO
 
 var projectile = preload("res://Weapons/Projectile/Projectile.tscn")
 
+const scent_scene = preload("res://Characters/Player/Scent.tscn")
+var scent_trail = []
+
+
 func _ready():
-	pass
+	$ScentTimer.connect("timeout", self, "add_scent")
+
+
+func add_scent():
+	var scent = scent_scene.instance()
+	scent.player = self
+	scent.position = self.position
+	
+#	Game.level.effects.
+	get_parent().add_child(scent)
+	scent_trail.push_front(scent)
+	
 
 
 func _physics_process(delta):
