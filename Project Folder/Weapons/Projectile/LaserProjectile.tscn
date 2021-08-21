@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Weapons/Projectile/LaserProjectile.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Weapons/MuzzleFlash/laser_beam.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Weapons/MuzzleFlash/laser_muzzle.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Weapons/MuzzleFlash/blank.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -10,7 +9,7 @@ extents = Vector2( 8.55885, 3.24289 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ null, ExtResource( 4 ) ],
 "loop": false,
 "name": "flash",
 "speed": 25.0

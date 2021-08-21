@@ -17,7 +17,7 @@ var reload_time = 0
 
 func _ready():
 	$Timer.connect("timeout",self,"_on_Timer_timeout") 
-	$Timer.wait_time = rand_range(0.1, 0.2)
+	$Timer.wait_time = rand_range(0.5, 1)
 	
 	$ReloadTime.connect("timeout",self,"_on_ReloadTime_timeout") 
 

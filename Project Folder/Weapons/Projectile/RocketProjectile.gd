@@ -5,6 +5,7 @@ var velocity = Vector2()
 var speed = 600
 var rocket_whistle_sfx = preload("res://SFX/SFX_guns/Kenney gun sound export Rocket Whistle.wav")
 var explosion_scene = preload("res://Weapons/Projectile/RocketExplosion.tscn")
+var damage = 20
 
 func start(pos, dir, spread):
 	if spread:
@@ -26,10 +27,10 @@ func _ready():
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		if collision.has_method("take_enemy_damage"):
-			pass
-		elif collision.has_method("take_damage"):
-			pass
+		if collision.get_collider().has_method("take_enemy_damage"):
+			collision.get_collider().take_enemy_damage(damage)
+		elif collision.get_collider().has_method("take_damage"):
+			collision.get_collider().take_damage(damage)
 		
 		var explosion_object = explosion_scene.instance()
 		get_parent().add_child(explosion_object)

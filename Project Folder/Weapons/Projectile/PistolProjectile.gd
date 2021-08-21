@@ -3,6 +3,7 @@ extends KinematicBody2D
 var direction
 var velocity = Vector2()
 var speed = 600
+var damage = 20
 #var on_ready = false
 
 func start(pos, dir, spread):
@@ -24,10 +25,10 @@ func _ready():
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		if collision.has_method("take_enemy_damage"):
-			pass
-		elif collision.has_method("take_damage"):
-			pass
+		if collision.get_collider().has_method("take_enemy_damage"):
+			collision.get_collider().take_enemy_damage(damage)
+		elif collision.get_collider().has_method("take_damage"):
+			collision.get_collider().take_damage(damage)
 		
 		queue_free()
 

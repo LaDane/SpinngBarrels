@@ -36,6 +36,6 @@ func fire_weapon():
 	projectile_object.set_collision_layer_bit(5, true)
 	projectile_object.set_collision_mask_bit(2, false)
 
-	projectile_object.start($RotationNode/Position2D.global_position, $RotationNode.rotation)
+	projectile_object.start($RotationNode/Position2D.global_position, $RotationNode.rotation, false)
 
 	get_parent().add_child(projectile_object)
