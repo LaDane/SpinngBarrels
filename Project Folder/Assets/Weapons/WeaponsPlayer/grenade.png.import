@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rocket_launcher_rocket.png-6f6b621283af0f3ada446342bb30853a.stex"
+path="res://.import/grenade.png-455d3d15c20cf0aec9fb7e8e1cb08943.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/rocket_launcher_rocket.png"
-dest_files=[ "res://.import/rocket_launcher_rocket.png-6f6b621283af0f3ada446342bb30853a.stex" ]
+source_file="res://Assets/Weapons/WeaponsPlayer/grenade.png"
+dest_files=[ "res://.import/grenade.png-455d3d15c20cf0aec9fb7e8e1cb08943.stex" ]
 
 [params]
 

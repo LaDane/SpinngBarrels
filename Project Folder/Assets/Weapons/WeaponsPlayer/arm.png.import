@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grenade.png-fe24943d574e17ffda6aa02d2d16ea82.stex"
+path="res://.import/arm.png-cdc11381188154b69f823635102c3446.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/grenade.png"
-dest_files=[ "res://.import/grenade.png-fe24943d574e17ffda6aa02d2d16ea82.stex" ]
+source_file="res://Assets/Weapons/WeaponsPlayer/arm.png"
+dest_files=[ "res://.import/arm.png-cdc11381188154b69f823635102c3446.stex" ]
 
 [params]
 

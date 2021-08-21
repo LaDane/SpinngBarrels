@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/laser.png-048ef256a16f545b20a9e6856c2a7799.stex"
+path="res://.import/blank.png-d30e8372f185a0d26939f8a902c5144d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/laser.png"
-dest_files=[ "res://.import/laser.png-048ef256a16f545b20a9e6856c2a7799.stex" ]
+source_file="res://Assets/Weapons/MuzzleFlash/blank.png"
+dest_files=[ "res://.import/blank.png-d30e8372f185a0d26939f8a902c5144d.stex" ]
 
 [params]
 

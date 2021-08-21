@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rocket_launcher.png-cc00457da6876f4d334a2dc40ced3613.stex"
+path="res://.import/sniper.png-85ab880278dbaaa5d85c8e7b8af7211d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/rocket_launcher.png"
-dest_files=[ "res://.import/rocket_launcher.png-cc00457da6876f4d334a2dc40ced3613.stex" ]
+source_file="res://Assets/Weapons/WeaponsPlayer/sniper.png"
+dest_files=[ "res://.import/sniper.png-85ab880278dbaaa5d85c8e7b8af7211d.stex" ]
 
 [params]
 

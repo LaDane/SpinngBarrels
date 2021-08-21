@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arm.png-ff5a64ab3fccbb4369a581f30c209e94.stex"
+path="res://.import/smg.png-d3f2b06c730ce1a4090af4e5c2680e1a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/arm.png"
-dest_files=[ "res://.import/arm.png-ff5a64ab3fccbb4369a581f30c209e94.stex" ]
+source_file="res://Assets/Weapons/WeaponsPlayer/smg.png"
+dest_files=[ "res://.import/smg.png-d3f2b06c730ce1a4090af4e5c2680e1a.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

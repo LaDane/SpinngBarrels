@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/assualt.png-ec738003cc2c11526934f9f0a511a5d0.stex"
+path="res://.import/shotLarge.png-c6b312df365158b75bf228bbc2c7db0e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/assualt.png"
-dest_files=[ "res://.import/assualt.png-ec738003cc2c11526934f9f0a511a5d0.stex" ]
+source_file="res://Assets/Weapons/MuzzleFlash/shotLarge.png"
+dest_files=[ "res://.import/shotLarge.png-c6b312df365158b75bf228bbc2c7db0e.stex" ]
 
 [params]
 
