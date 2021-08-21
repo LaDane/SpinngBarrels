@@ -86,6 +86,12 @@ tile_data = PoolIntArray( 1507368, 2, 0, 1507369, 2, 0, 1507370, 2, 0, 1507371, 
 
 [node name="Environment" type="Node2D" parent="."]
 
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 419.284, 305.516 )
+compass_controls = true
+face_mouse_control = false
+health = 400
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="Enemies" instance=ExtResource( 10 )]
@@ -117,11 +123,6 @@ position = Vector2( 7569.72, 3488.41 )
 
 [node name="Zombie" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 4139.54, 1671.39 )
-
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 419.284, 305.516 )
-compass_controls = true
-face_mouse_control = false
 
 [connection signal="body_entered" from="Rooms/Room 1" to="." method="_on_Room_1_body_entered"]
 [connection signal="timeout" from="Rooms/RoomTimer" to="." method="_on_RoomTimer_timeout"]

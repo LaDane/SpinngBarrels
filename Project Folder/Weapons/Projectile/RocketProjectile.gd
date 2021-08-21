@@ -28,9 +28,12 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		if collision.get_collider().has_method("take_enemy_damage"):
+			Globals.combo_count = Globals.combo_count + 1
 			collision.get_collider().take_enemy_damage(damage)
 		elif collision.get_collider().has_method("take_damage"):
 			collision.get_collider().take_damage(damage)
+		else:
+			Globals.combo_count = 0
 		
 		var explosion_object = explosion_scene.instance()
 		get_parent().add_child(explosion_object)

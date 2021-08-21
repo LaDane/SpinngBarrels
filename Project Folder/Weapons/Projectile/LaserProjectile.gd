@@ -4,6 +4,8 @@ var direction
 var velocity = Vector2()
 var speed = 12
 var damage = 100
+
+var damaged_enemy = false
 #var on_ready = false
 
 func start(pos, dir, use_spread):
@@ -38,10 +40,13 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Projectile_body_entered(body):
 	if body.has_method("take_enemy_damage"):
-		print("here")
 		body.take_enemy_damage(damage)
+		damaged_enemy = true
+		Globals.combo_count = Globals.combo_count + 1
 	elif body.has_method("take_damage"):
 		body.take_damage(damage)
 	else:
+		if not damaged_enemy:
+			Globals.combo_count = 0
 		queue_free()
 		
