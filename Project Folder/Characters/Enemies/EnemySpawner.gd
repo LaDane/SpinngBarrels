@@ -1,6 +1,6 @@
 extends Position2D
 
-export var spawn_interval = 1
+export var spawn_interval = 5
 export var zombie_spawn = true
 export var hitman_spawn = false
 
