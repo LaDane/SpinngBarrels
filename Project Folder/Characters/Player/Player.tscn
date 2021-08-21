@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/AnimWalk/soldier_walk1.png" type="Texture" id=2]
@@ -8,12 +8,29 @@
 [ext_resource path="res://Assets/Player/AnimWalk/soldier_walk5.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Player/AnimWalk/soldier_walk7.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Player/AnimWalk/soldier_walk6.png" type="Texture" id=8]
+[ext_resource path="res://SFX/SFX_guns/Kenney gun sound export Shotgun fire.wav" type="AudioStream" id=9]
+[ext_resource path="res://SFX/SFX_guns/Kenney gun sound export SMG fire.wav" type="AudioStream" id=10]
+[ext_resource path="res://SFX/SFX_guns/Kenney gun sound export Sniper Fire.wav" type="AudioStream" id=11]
+[ext_resource path="res://SFX/SFX_guns/Kenney gun sound export Pistol Fire.wav" type="AudioStream" id=12]
+[ext_resource path="res://SFX/SFX_guns/Laser charge + dischrage.wav" type="AudioStream" id=13]
+[ext_resource path="res://SFX/SFX_guns/Assault rifle fire.wav" type="AudioStream" id=14]
+[ext_resource path="res://SFX/SFX_guns/Kenney gun sound export Rocket fire.wav" type="AudioStream" id=15]
+[ext_resource path="res://Assets/Player/AnimDeath/soldier_dead2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Player/AnimDeath/soldier_dead1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Player/AnimDeath/soldier_dead3.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Player/AnimDeath/soldier_dead4.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Player/AnimDeath/soldier_dead5.png" type="Texture" id=20]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.7423
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "dead",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk",
@@ -37,8 +54,8 @@ shape = SubResource( 1 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="GunPosition" type="Position2D" parent="."]
-position = Vector2( 27.2639, 10.2085 )
+[node name="Arm" type="Position2D" parent="."]
+position = Vector2( 6.49838, 11.0503 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
@@ -47,3 +64,24 @@ animation = "walk"
 [node name="ScentTimer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
+
+[node name="AudioAssualt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+
+[node name="AudioLaser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+
+[node name="AudioPistol" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+
+[node name="AudioRocketLauncher" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+
+[node name="AudioShotgun" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="AudioSMG" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+
+[node name="AudioSniper" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )

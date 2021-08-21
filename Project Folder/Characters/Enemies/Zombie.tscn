@@ -30,10 +30,8 @@ visible = false
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="StuckCheck" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
+[node name="AttackInterval" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="StuckCheck" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="StuckCheck" to="." method="_on_StuckCheck_timeout"]
+[connection signal="timeout" from="AttackInterval" to="." method="_on_AttackInterval_timeout"]

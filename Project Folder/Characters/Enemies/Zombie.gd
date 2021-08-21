@@ -1,10 +1,14 @@
 extends KinematicBody2D
 
 onready var Player = get_parent().get_parent().get_node("Player")
-export var speed = 200
+export var speed = 1.2
 
 var direction = Vector2.ZERO
 var motion = Vector2()
+
+var attack_damage = 20
+var attack_interval = 2
+var waiting_to_attack = false
 
 
 func _ready():
@@ -32,14 +36,22 @@ func chase_target():
 func _physics_process(delta):
 	look_at(Player.global_position)
 	motion = direction * speed
-	move_and_slide(motion)
-
+	var collision = move_and_collide(motion)
+	
+	if collision and collision.collider.has_method("take_damage") and !waiting_to_attack:
+		print("Ouch!")
+		collision.collider.take_damage(attack_damage)
+		waiting_to_attack = true
+		$AttackInterval.wait_time = attack_interval
+		$AttackInterval.start()
+		
 
 func _on_Timer_timeout():
 		chase_target()
 
 
-
+func _on_AttackInterval_timeout():
+	waiting_to_attack = false
 
 
 
@@ -99,3 +111,5 @@ func _on_Timer_timeout():
 #
 #func _on_Timer_timeout():
 #	generate_path()
+
+
