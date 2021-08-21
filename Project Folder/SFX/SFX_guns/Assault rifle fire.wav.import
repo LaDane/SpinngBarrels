@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Assault rifle fire.wav-9669832c8c4d70f94c78afa3fe62f31d.sample"
+
+[deps]
+
+source_file="res://SFX/SFX_guns/Assault rifle fire.wav"
+dest_files=[ "res://.import/Assault rifle fire.wav-9669832c8c4d70f94c78afa3fe62f31d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

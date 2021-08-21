@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Kenney gun sound export SMG fire.wav-8bc01e6f783a67283b66d0fd7a74f185.sample"
+
+[deps]
+
+source_file="res://SFX/SFX_guns/Kenney gun sound export SMG fire.wav"
+dest_files=[ "res://.import/Kenney gun sound export SMG fire.wav-8bc01e6f783a67283b66d0fd7a74f185.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
