@@ -3,10 +3,13 @@ extends KinematicBody2D
 export var compass_controls = false
 export var face_mouse_control = true
 
-var health = 100
+export var health = 100
 var is_dead = false
 var movement_speed = 200
 var velocity = Vector2.ZERO
+
+var gun_rotation = ["assault", "laser", "pistol", "rocket_launcher", "shotgun", "smg", "sniper"]
+var current_gun_rotation = 0
 
 # Gun scenes
 var assault_scene = preload("res://Weapons/WeaponScenes/Assault.tscn")
@@ -28,7 +31,9 @@ var smg_sfx_fire = preload("res://SFX/SFX_guns/Kenney gun sound export SMG fire.
 var sniper_sfx_fire = preload("res://SFX/SFX_guns/Kenney gun sound export Sniper Fire.wav")
 
 # Gun projectils
-var projectile = preload("res://Weapons/Projectile/Projectile.tscn")
+#var projectile = preload("res://Weapons/Projectile/Projectile.tscn")
+var assualt_projectile_scene = preload("res://Weapons/Projectile/AssaultProjectile.tscn")
+var pistol_projectile_scene = preload("res://Weapons/Projectile/PistolProjetile.tscn")
 
 const scent_scene = preload("res://Characters/Player/Scent.tscn")
 var scent_trail = []
@@ -37,6 +42,10 @@ var scent_trail = []
 func _ready():
 	$ScentTimer.connect("timeout", self, "add_scent")
 	change_weapon("pistol")
+	
+	randomize()
+	gun_rotation.shuffle()
+	print(gun_rotation)
 
 
 func add_scent():
@@ -92,7 +101,14 @@ func get_input():
 	# Fire weapon
 	if Input.is_action_just_pressed("shoot"):
 		fire_weapon()
-	
+		#After player fires, pick next weapon in rotation
+		#change_weapon()
+		current_gun_rotation = current_gun_rotation + 1
+		if current_gun_rotation >= gun_rotation.size():
+			current_gun_rotation = 0
+		change_weapon(gun_rotation[current_gun_rotation])
+
+
 	# Temporary change weapon
 	if Input.is_action_just_pressed("1"):
 		change_weapon("assault")
@@ -139,25 +155,34 @@ func remove_weapon():
 	if $Gun:
 		remove_child($Gun)					# Maybe memory intensive
 
+
 func fire_weapon():
-	var projectile_object = projectile.instance()
-	projectile_object.start($Gun/GunPosition.global_position, rotation)
-	get_parent().add_child(projectile_object)
+	var projectile_object
 	
 	if current_gun == "assault":
-		$AudioAssualt.play()
+		$AudioAssualt.play(1.0)
+		projectile_object = pistol_projectile_scene.instance()
 	elif current_gun == "laser":
-		$AudioLaser.play()
+		$AudioLaser.play(2.79)
+		projectile_object = pistol_projectile_scene.instance()
 	elif current_gun == "pistol":
-		$AudioPistol.play()
+		$AudioPistol.play(0.95)
+		projectile_object = pistol_projectile_scene.instance()
 	elif current_gun == "rocket_launcher":
-		$AudioRocketLauncher.play()
+		$AudioRocketLauncher.play(0.98)
+		projectile_object = pistol_projectile_scene.instance()
 	elif current_gun == "shotgun":
-		$AudioShotgun.play()
+		$AudioShotgun.play(1.0)
+		projectile_object = pistol_projectile_scene.instance()
 	elif current_gun == "smg":
-		$AudioSMG.play()
+		$AudioSMG.play(1.0)
+		projectile_object = pistol_projectile_scene.instance()
 	elif current_gun == "sniper":
-		$AudioSniper.play()
+		$AudioSniper.play(0.98)
+		projectile_object = pistol_projectile_scene.instance()
+		
+	projectile_object.start($Gun/GunPosition.global_position, rotation)
+	get_parent().add_child(projectile_object)
 
 
 func take_damage(dmg):

@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var Player = get_parent().get_parent().get_node("Player")
-export var speed = 1.2
+export var speed = 100
 
 var direction = Vector2.ZERO
 var motion = Vector2()
@@ -12,38 +12,42 @@ var waiting_to_attack = false
 
 
 func _ready():
-	$Timer.wait_time = rand_range(0.1, 0.5)
+	$Timer.wait_time = rand_range(0.1, 0.2)
 
 
 func chase_target():
 	var look = $RayCast2D
 	look.cast_to = (Player.position - position)
 	look.force_raycast_update()
-
+	
 	if !look.is_colliding():
 		direction = look.cast_to.normalized()
-
+		$Sprite.look_at(Player.position)
+		
 	else:
 		for scent in Player.scent_trail:
 			look.cast_to = (scent.position - position)
 			look.force_raycast_update()
+
 			
 			if !look.is_colliding():
 				direction = look.cast_to.normalized()
+				$Sprite.look_at(scent.position)
 				break
 
 
 func _physics_process(delta):
-	look_at(Player.global_position)
 	motion = direction * speed
-	var collision = move_and_collide(motion)
+	motion = move_and_slide(motion, Vector2(0,0))
 	
-	if collision and collision.collider.has_method("take_damage") and !waiting_to_attack:
-		print("Ouch!")
-		collision.collider.take_damage(attack_damage)
-		waiting_to_attack = true
-		$AttackInterval.wait_time = attack_interval
-		$AttackInterval.start()
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision and collision.collider.has_method("take_damage") and !waiting_to_attack:
+			print("Ouch!")
+			collision.collider.take_damage(attack_damage)
+			waiting_to_attack = true
+			$AttackInterval.wait_time = attack_interval
+			$AttackInterval.start()
 		
 
 func _on_Timer_timeout():

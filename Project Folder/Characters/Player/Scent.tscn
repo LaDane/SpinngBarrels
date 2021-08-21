@@ -11,9 +11,10 @@ autostart = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-color = Color( 0.0431373, 0.905882, 0.380392, 1 )
+margin_right = 10.0
+margin_bottom = 10.0
+rect_pivot_offset = Vector2( 5, 5 )
+color = Color( 0.25098, 0.0431373, 0.905882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
