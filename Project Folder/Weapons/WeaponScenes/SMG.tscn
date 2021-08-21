@@ -6,4 +6,4 @@
 texture = ExtResource( 1 )
 
 [node name="GunPosition" type="Position2D" parent="."]
-position = Vector2( 14.3912, -1.642 )
+position = Vector2( 12.1463, -1.92262 )

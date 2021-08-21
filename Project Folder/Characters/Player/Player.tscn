@@ -52,7 +52,7 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.6, 0.6 )
 
 [node name="Arm" type="Position2D" parent="."]
 position = Vector2( 6.49838, 11.0503 )
@@ -85,3 +85,13 @@ stream = ExtResource( 10 )
 
 [node name="AudioSniper" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
+
+[node name="GunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ChangeWeaponTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="timeout" from="ChangeWeaponTimer" to="." method="_on_ChangeWeaponTimer_timeout"]

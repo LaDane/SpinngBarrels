@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Weapons/Projectile/RocketExplosion.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Weapons/Explosions/explosion1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Weapons/Explosions/explosionSmoke3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Weapons/Explosions/explosionSmoke4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Weapons/Explosions/explosionSmoke5.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Weapons/Explosions/explosionSmoke2.png" type="Texture" id=6]
+[ext_resource path="res://SFX/SFX_guns/Kenney gun sound export Rocket hit Explosion.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Weapons/MuzzleFlash/blank.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "explode",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 51.3729
+
+[node name="RocketExplosion" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Explosion" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "explode"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_RocketExplosion_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

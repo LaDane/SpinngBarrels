@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Weapons/MuzzleFlash/blank.png" type="Texture" id=1]
+[ext_resource path="res://Weapons/Projectile/RocketProjectile.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Weapons/Ammunition/rocket_launcher_rocket.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Weapons/MuzzleFlash/shotOrange.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Weapons/MuzzleFlash/shotLarge.png" type="Texture" id=5]
+[ext_resource path="res://SFX/SFX_guns/Kenney gun sound export Rocket Whistle.wav" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 35.8239, 6.73149 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "flash",
+"speed": 20.0
+} ]
+
+[node name="Projectile" type="KinematicBody2D"]
+position = Vector2( 3.26792, 0 )
+collision_layer = 16
+collision_mask = 15
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 41.4561, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+position = Vector2( -15.5879, -2.27374e-13 )
+rotation = -3.14159
+scale = Vector2( 1.58386, 0.84525 )
+texture = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 38.7868, 0 )
+scale = Vector2( 0.568574, 0.472312 )
+texture = ExtResource( 3 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 4.91632, 0 )
+scale = Vector2( 0.576908, 0.275886 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 40.81, 0 )
+scale = Vector2( 3.17348, 4.34746 )
+frames = SubResource( 2 )
+animation = "flash"
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource( 6 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

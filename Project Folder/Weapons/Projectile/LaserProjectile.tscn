@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Weapons/Projectile/LaserProjectile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Weapons/MuzzleFlash/laser_beam.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Weapons/MuzzleFlash/laser_muzzle.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Weapons/MuzzleFlash/blank.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.55885, 3.24289 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "flash",
+"speed": 25.0
+} ]
+
+[node name="Projectile" type="KinematicBody2D"]
+position = Vector2( 3.26792, 0 )
+collision_layer = 16
+collision_mask = 15
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.94585, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 11.3633, 0 )
+scale = Vector2( 1.46409, 1.24713 )
+texture = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 4.91632, 0 )
+scale = Vector2( 0.781645, 0.275886 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 27.5437, -0.842796 )
+scale = Vector2( 1.62283, 1.57 )
+frames = SubResource( 2 )
+animation = "flash"
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
