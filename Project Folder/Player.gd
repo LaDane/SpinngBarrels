@@ -206,14 +206,15 @@ func fire_weapon():
 
 func spawn_projectile():
 	var current_projectile = current_projectile_scene.instance()
-	current_projectile.start($Gun/GunPosition.global_position, rotation, use_spread)
-	get_parent().add_child(current_projectile)
-	
-	shots_fired = shots_fired + 1
-	if shots_fired >= shots_in_mag:
-		$ChangeWeaponTimer.start()
-	else:
-		$GunTimer.start()
+	if $Gun/GunPosition != null:
+		current_projectile.start($Gun/GunPosition.global_position, rotation, use_spread)
+		get_parent().add_child(current_projectile)
+		
+		shots_fired = shots_fired + 1
+		if shots_fired >= shots_in_mag:
+			$ChangeWeaponTimer.start()
+		else:
+			$GunTimer.start()
 
 
 func _on_ChangeWeaponTimer_timeout():
@@ -267,6 +268,7 @@ func remove_weapon():
 
 func take_damage(dmg):
 	health = health - dmg
+	$Camera2D/Interface/TextureRect/AnimationPlayer.play("take_damage")
 	if health <= 0 and is_dead == false:
 		player_die()
 

@@ -102,7 +102,7 @@ hitman_spawn = true
 position = Vector2( 3379.54, 1707.39 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3424.8, 1222.3 )
+position = Vector2( 1811.99, 767.618 )
 compass_controls = true
 face_mouse_control = false
 

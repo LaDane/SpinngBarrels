@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/WeaponWheel/Background.png" type="Texture" id=1]
 [ext_resource path="res://Assets/WeaponWheel/smg.PNG" type="Texture" id=2]
@@ -9,9 +9,39 @@
 [ext_resource path="res://Assets/WeaponWheel/pistol.PNG" type="Texture" id=7]
 [ext_resource path="res://Assets/WeaponWheel/laser.PNG" type="Texture" id=8]
 [ext_resource path="res://Assets/WeaponWheel/highlight.png" type="Texture" id=9]
+[ext_resource path="res://Assets/DamageGrunge/damge_anim1.png" type="Texture" id=14]
+
+[sub_resource type="Animation" id=2]
+resource_name = "take_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.980392, 0.462745, 0.462745, 0.356863 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Interface" type="CanvasLayer"]
 layer = 99
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+anims/take_damage = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
