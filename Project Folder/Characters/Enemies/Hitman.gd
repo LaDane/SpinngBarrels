@@ -1,6 +1,7 @@
 extends "res://Characters/Enemies/EnemyBaseScript.gd"
 
 var pistol_projectile_scene = preload("res://Characters/Enemies/HitmanProjectile.tscn")
+var bullet_shells_scene = preload("res://Particles/Bullet Particles.tscn")
 
 func _ready():
 	speed = 100
@@ -39,3 +40,9 @@ func fire_weapon():
 	projectile_object.start($RotationNode/Position2D.global_position, $RotationNode.rotation, false)
 
 	get_parent().add_child(projectile_object)
+	
+	var bullet_shells = bullet_shells_scene.instance()
+	bullet_shells.global_position = $RotationNode/Position2D.global_position
+	bullet_shells.global_rotation_degrees = $RotationNode/Position2D.global_rotation_degrees
+	bullet_shells.get_node("Bullet Shells").emitting = true
+	get_parent().add_child(bullet_shells)
