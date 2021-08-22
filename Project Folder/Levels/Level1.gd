@@ -122,6 +122,26 @@ func active_room_2():
 	sniper_spawn_room2_6.set_active()
 
 
+func active_room_3():
+	$Enemies/Spawner_room3_1.set_active()
+	$Enemies/Spawner_room3_2.set_active()
+	$Enemies/Spawner_room3_3.set_active()
+	$Enemies/Spawner_room3_4.set_active()
+	$Enemies/Spawner_room3_5.set_active()
+	$Enemies/Spawner_room3_5.set_active()
+	$Enemies/Spawner_room3_6.set_active()
+	$Enemies/Spawner_room3_7.set_active()
+	$Enemies/Spawner_room3_8.set_active()
+	$Enemies/Spawner_room3_9.set_active()
+	$Enemies/Spawner_room3_10.set_active()
+	$Enemies/Spawner_room3_11.set_active()
+
+
 func _process(delta):
 	var reduced = "%.2f" % RoomTimer.time_left
 	$CanvasLayer/Control/VBoxContainer/Label.text = String(reduced)
+
+
+func _on_Room_3_body_entered(body):
+	current_room = 3
+	active_room_3()
