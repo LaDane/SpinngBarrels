@@ -72,6 +72,9 @@ var smg_fire_interval = 0.08
 var shotgun_shots_in_mag = 5
 var shotgun_fire_interval = 0.01
 
+# Particles
+var show_bullet_shells = false
+var bullet_shells_scene = preload("res://Particles/Bullet Particles.tscn")
 
 const scent_scene = preload("res://Characters/Player/Scent.tscn")
 var scent_trail = []
@@ -165,6 +168,7 @@ func get_input():
 
 func fire_weapon():
 	use_spread = false
+	show_bullet_shells = false
 	shots_in_mag = 1
 	$GunTimer.wait_time = 0
 	
@@ -174,6 +178,7 @@ func fire_weapon():
 		shots_in_mag = assault_shots_in_mag
 		$GunTimer.wait_time = assault_fire_interval
 		Globals.camera.shake(75, 0.5, 75)
+		show_bullet_shells = true
 		
 	elif current_gun == "laser":
 		$AudioLaser.play(2.79)
@@ -183,6 +188,7 @@ func fire_weapon():
 		$AudioPistol.play(0.95)
 		current_projectile_scene = pistol_projectile_scene
 		Globals.camera.shake(40, 0.5, 15)
+		show_bullet_shells = true
 		
 	elif current_gun == "rocket_launcher":
 		$AudioRocketLauncher.play(0.98)
@@ -196,6 +202,7 @@ func fire_weapon():
 		$GunTimer.wait_time = shotgun_fire_interval
 		use_spread = true
 		Globals.camera.shake(100, 0.5, 100)
+		show_bullet_shells = true
 		
 	elif current_gun == "smg":
 		$AudioSMG.play(1.0)
@@ -204,11 +211,13 @@ func fire_weapon():
 		$GunTimer.wait_time = smg_fire_interval
 		use_spread = true
 		Globals.camera.shake(75, 1, 75)
+		show_bullet_shells = true
 		
 	elif current_gun == "sniper":
 		$AudioSniper.play(0.98)
 		current_projectile_scene = sniper_projectile_scene
 		Globals.camera.shake(300, 0.5, 300)
+		show_bullet_shells = true
 		
 	spawn_projectile()
 
@@ -218,6 +227,13 @@ func spawn_projectile():
 	if $Gun/GunPosition != null:
 		current_projectile.start($Gun/GunPosition.global_position, rotation, use_spread)
 		get_parent().add_child(current_projectile)
+		
+		if show_bullet_shells:
+			var bullet_shells = bullet_shells_scene.instance()
+			bullet_shells.global_position = $Arm.global_position
+			bullet_shells.global_rotation_degrees = $Arm.global_rotation_degrees
+			bullet_shells.get_node("Bullet Shells").emitting = true
+			get_parent().add_child(bullet_shells)
 		
 		shots_fired = shots_fired + 1
 		if shots_fired >= shots_in_mag:
@@ -306,46 +322,18 @@ func rotate_weapon_wheel():
 		visible_wheel_positions[i] = visible_wheel_positions[i] - 1
 		if visible_wheel_positions[i] < 0:
 			visible_wheel_positions[i] = 5
-#	print(visible_wheel_positions)
 			
 	rotate_tween.interpolate_property(weapon_wheel_sprite, "rotation_degrees", weapon_wheel_sprite.rotation_degrees, weapon_wheel_sprite.rotation_degrees + 60, 0.3, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	rotate_tween.start()
 	
-#	weapon_wheel.rotation_degrees = weapon_wheel.rotation_degrees + 60
 	
 
 func weapon_wheel_follow_pos():
-#	sprite.position = pos 
-	
-	# Current gun
 	var current_gun_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, 0))
-#	print("Current gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, 0)])
-		
-	# Next gun
-#	print(calculate_gun_rotation_index(current_gun_rotation, 1))
-#	print(gun_rotation[calculate_gun_rotation_index(current_gun_rotation, 1)])
-	
 	var next_gun_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, 1))
-#	print("Next gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, 1)])
-	
 	var next_gun2_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, 2))
-#	print("Next 2 gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, 2)])
-	
-	# Last gun
 	var last_gun_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, -1))
-#	print("Last gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, -1)])
-	
 	var last_gun2_sprite = get_weapon_sprite(calculate_gun_rotation_index(current_gun_rotation, -2))
-#	print("Last 2 gun = ", gun_rotation[calculate_gun_rotation_index(current_gun_rotation, -2)])
-	
-	# ABOVE WORKS
-	
-#	gun_rotation[current_gun_rotation]
-#	visible_wheel_positions[2]
-
-#	for i in range(weapon_wheel_positions.size()):
-#		print(weapon_wheel_positions[i].global_position)
-#	print("--------------")
 
 	current_gun_sprite.global_position = weapon_wheel_positions[visible_wheel_positions[2]].global_position
 	next_gun_sprite.global_position = weapon_wheel_positions[visible_wheel_positions[1]].global_position
@@ -356,8 +344,6 @@ func weapon_wheel_follow_pos():
 	current_gun_sprite.visible = true
 	next_gun_sprite.visible = true
 	next_gun2_sprite.visible = true
-#	last_gun_sprite.visible = true
-#	last_gun2_sprite.visible = true
 
 
 func calculate_gun_rotation_index(index, d):
@@ -366,7 +352,6 @@ func calculate_gun_rotation_index(index, d):
 		wat_math = wat_math - 7
 	elif wat_math < 0:
 		wat_math = 7 + wat_math
-#	print(wat_math)
 	return wat_math
 
 	
@@ -386,7 +371,6 @@ func get_weapon_sprite(gun_rotation_index):
 	elif gun_rotation[gun_rotation_index] == "sniper":
 		return sniper_sprite
 	
-#var gun_rotation = ["assault", "laser", "pistol", "rocket_launcher", "shotgun", "smg", "sniper"]
 
 func combo_heal():
 	if Globals.combo_count == 5:
