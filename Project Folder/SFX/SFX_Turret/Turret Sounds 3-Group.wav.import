@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Turret Sounds 3-Group.wav-5b053467f8d4795f2e14c4ec0ebad7e0.sample"
+
+[deps]
+
+source_file="res://SFX/SFX_Turret/Turret Sounds 3-Group.wav"
+dest_files=[ "res://.import/Turret Sounds 3-Group.wav-5b053467f8d4795f2e14c4ec0ebad7e0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

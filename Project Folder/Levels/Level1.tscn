@@ -158,7 +158,7 @@ position = Vector2( 10512, 4288 )
 texture = ExtResource( 15 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3488, 2576 )
+position = Vector2( 512, 296 )
 compass_controls = true
 face_mouse_control = false
 
