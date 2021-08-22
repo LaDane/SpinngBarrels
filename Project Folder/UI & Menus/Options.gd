@@ -1,5 +1,10 @@
 extends Control
 
+func _ready():
+	$NinePatchRect/VBoxContainer/MasterSlider.value = Globals.master_volume
+	$NinePatchRect/VBoxContainer/MusicSlider.value = Globals.music_volume
+	$NinePatchRect/VBoxContainer/SoundEffectsSlider.value = Globals.SFX_volume
+
 
 func _on_MasterSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(0, value)

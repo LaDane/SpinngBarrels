@@ -88,6 +88,8 @@ __meta__ = {
 margin_top = 67.0
 margin_right = 210.0
 margin_bottom = 83.0
+min_value = -40.0
+max_value = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,6 +109,8 @@ __meta__ = {
 margin_top = 115.0
 margin_right = 210.0
 margin_bottom = 131.0
+max_value = -40.0
+step = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -126,6 +130,8 @@ __meta__ = {
 margin_top = 163.0
 margin_right = 210.0
 margin_bottom = 179.0
+max_value = -40.0
+step = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

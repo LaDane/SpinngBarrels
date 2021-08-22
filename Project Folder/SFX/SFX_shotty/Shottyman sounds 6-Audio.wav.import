@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Shottyman sounds 6-Audio.wav-14b11c08651778cc549bf37b31c0a31f.sample"
+
+[deps]
+
+source_file="res://SFX/SFX_shotty/Shottyman sounds 6-Audio.wav"
+dest_files=[ "res://.import/Shottyman sounds 6-Audio.wav-14b11c08651778cc549bf37b31c0a31f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

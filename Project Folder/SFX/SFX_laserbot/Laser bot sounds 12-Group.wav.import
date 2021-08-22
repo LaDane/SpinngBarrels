@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Laser bot sounds 12-Group.wav-b6ceac08c2677792659ef10ae3387379.sample"
+
+[deps]
+
+source_file="res://SFX/SFX_laserbot/Laser bot sounds 12-Group.wav"
+dest_files=[ "res://.import/Laser bot sounds 12-Group.wav-b6ceac08c2677792659ef10ae3387379.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
