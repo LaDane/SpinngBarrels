@@ -15,12 +15,13 @@ var attack_damage = 0
 var weapon_ready = true
 var reload_time = 0
 
+var dead_timer = Timer.new()
+
 func _ready():
 	$Timer.connect("timeout",self,"_on_Timer_timeout") 
 	$Timer.wait_time = rand_range(0.5, 1)
 	
 	$ReloadTime.connect("timeout",self,"_on_ReloadTime_timeout") 
-	
 	
 #	direction = (Player.position - position).normalized()
 #	look_at(Player.position)
@@ -82,4 +83,13 @@ func take_enemy_damage(dmg):
 
 func die():
 	is_dead = true
+	
+	dead_timer.set_wait_time(2)
+	dead_timer.set_one_shot(true)
+	self.add_child(dead_timer)
+	dead_timer.start()
+	visible = false
+	yield(dead_timer, "timeout")
+	print("deleted ", name)
+	
 	queue_free()

@@ -24,7 +24,31 @@ func move_with_collision():
 			$ReloadTime.wait_time = reload_time
 			$ReloadTime.start()
 
+func take_enemy_damage(dmg):
+	health = health - dmg
+	if health <= 0 and is_dead == false:
+		die()
+	else:
+		$AnimationPlayer.play("hit_animation")
+	play_random_sound()
 
+func play_random_sound():
+	randomize()
+	var rand = randi()%13+1
+	match rand:
+		1: $AudioSFX1.play()
+		2: $AudioSFX2.play()
+		3: $AudioSFX3.play()
+		4: $AudioSFX4.play()
+		5: $AudioSFX5.play()
+		6: $AudioSFX6.play()
+		7: $AudioSFX7.play()
+		8: $AudioSFX8.play()
+		9: $AudioSFX9.play()
+		10: $AudioSFX10.play()
+		11: $AudioSFX11.play()
+		12: $AudioSFX12.play()
+		13: $AudioSFX13.play()
 
 
 ### ALTERNATE PATHFINDING ALGORITHM
@@ -80,5 +104,6 @@ func move_with_collision():
 #
 #func _on_Timer_timeout():
 #	generate_path()
+
 
 

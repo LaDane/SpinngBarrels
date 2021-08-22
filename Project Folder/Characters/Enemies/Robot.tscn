@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Enemies/Robot/robot.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Enemies/Robot.gd" type="Script" id=2]
 [ext_resource path="res://SFX/SFX_guns/Laser charge + dischrage.wav" type="AudioStream" id=3]
+[ext_resource path="res://SFX/SFX_laserbot/Laser bot sounds 2-Group.wav" type="AudioStream" id=4]
+[ext_resource path="res://SFX/SFX_laserbot/Laser bot sounds 7-Group.wav" type="AudioStream" id=5]
+[ext_resource path="res://SFX/SFX_laserbot/Laser bot sounds 12-Group.wav" type="AudioStream" id=6]
+[ext_resource path="res://SFX/SFX_laserbot/Laser bot sounds 5-Audio.wav" type="AudioStream" id=7]
+[ext_resource path="res://SFX/SFX_laserbot/Laser bot sounds 11-Audio.wav" type="AudioStream" id=8]
+[ext_resource path="res://SFX/SFX_laserbot/Laser bot sounds 6-Audio.wav" type="AudioStream" id=9]
+[ext_resource path="res://SFX/SFX_laserbot/Laser bot sounds 15-Audio.wav" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 21.5362
@@ -53,6 +60,35 @@ position = Vector2( 26.1486, 0.0702286 )
 
 [node name="AudioWeapon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+bus = "SFX_Levels"
+
+[node name="AudioSFX1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX_Levels"
+
+[node name="AudioSFX2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+bus = "SFX_Levels"
+
+[node name="AudioSFX3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+bus = "SFX_Levels"
+
+[node name="AudioSFX4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX_Levels"
+
+[node name="AudioSFX5" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+bus = "SFX_Levels"
+
+[node name="AudioSFX6" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX_Levels"
+
+[node name="AudioSFX7" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+bus = "SFX_Levels"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hit_animation = SubResource( 2 )

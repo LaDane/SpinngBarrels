@@ -64,3 +64,21 @@ func _on_GunTimer_timeout():
 		timer_running = false
 		fired_shots = 0
 		
+func take_enemy_damage(dmg):
+	health = health - dmg
+	if health <= 0 and is_dead == false:
+		die()
+	else:
+		$AnimationPlayer.play("hit_animation")
+	play_random_sound()
+
+func play_random_sound():
+	randomize()
+	var rand = randi()%5+1
+	match rand:
+		1: $AudioSFX1.play()
+		2: $AudioSFX2.play()
+		3: $AudioSFX3.play()
+		4: $AudioSFX4.play()
+		5: $AudioSFX5.play()
+		

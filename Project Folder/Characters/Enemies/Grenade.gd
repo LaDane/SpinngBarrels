@@ -11,7 +11,6 @@ func _ready():
 	
 	set_reload_time(reload_time)
 
-
 func _physics_process(delta):
 	check_range()
 
@@ -26,14 +25,27 @@ func check_range():
 		else:
 			speed = 170
 
-
 func fire_weapon():
 	var explosion_object = explosion_scene.instance()
-
-#	projectile_object.set_collision_layer_bit(4, false)
-#	projectile_object.set_collision_layer_bit(5, true)
-#	projectile_object.set_collision_mask_bit(2, false)
 	explosion_object.global_position = position
 
 	get_parent().add_child(explosion_object)
 	queue_free()
+
+func take_enemy_damage(dmg):
+	health = health - dmg
+	if health <= 0 and is_dead == false:
+		die()
+	else:
+		$AnimationPlayer.play("hit_animation")
+	play_random_sound()
+
+func play_random_sound():
+	randomize()
+	var rand = randi()%4+1
+	match rand:
+		1: $AudioSFX1.play()
+		2: $AudioSFX2.play()
+		3: $AudioSFX3.play()
+		4: $AudioSFX4.play()
+	
