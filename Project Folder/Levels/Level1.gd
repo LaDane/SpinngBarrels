@@ -24,7 +24,11 @@ var zombie_shotty_spawn_room2_1
 var zombie_hitman_spawn_room2_2
 var shotty_hitman_spawn_room2_3
 var zombie_spawn_room2_4
+var grenade_spawn_room2_5
+var sniper_spawn_room2_6
 
+#Corridor 2
+var grenade_spawn_corridor2_1
 
 func _ready():
 	LobbyMusic.playing = false
@@ -54,10 +58,15 @@ func _ready():
 	zombie_hitman_spawn_room2_2 = $Enemies/ZombieHitmanSpawn_Room2_2
 	shotty_hitman_spawn_room2_3 = $Enemies/ShottyHitmanSpawn_Room2_3
 	zombie_spawn_room2_4 = $Enemies/ZombieSpawn_Room2_4
+	grenade_spawn_room2_5 = $Enemies/GrenadeSpawn_Room2_5
+	sniper_spawn_room2_6 = $Enemies/SniperSpawn_Room2_6
+	
+	# Corridor 2
+	grenade_spawn_corridor2_1 = $Enemies/GrenadeSpawn_Corridor2_1
 
 func _on_Room_1_body_entered(body):
 	if current_room < 1:
-		RoomTimer.wait_time = 120
+		RoomTimer.wait_time = 90
 		RoomTimer.start()
 		current_room = 1
 	active_room_1()
@@ -78,10 +87,16 @@ func _on_RoomTimer_timeout():
 	if current_room == 1:
 		$Rooms/Doors/Door2/AnimationPlayer.play("Unlock")
 		zombie_spawn_corrider1_1.set_active()
+	if current_room == 2:
+		$Rooms/Doors/Door4/AnimationPlayer.play("Unlock")
+		grenade_spawn_corridor2_1.set_active()
+		
 
 
 func _on_Room_2_body_entered(body):
 	current_room = 2
+	RoomTimer.wait_time = 90
+	RoomTimer.start()
 	active_room_2()
 	
 func active_room_2():
@@ -95,3 +110,5 @@ func active_room_2():
 	zombie_hitman_spawn_room2_2.set_active()
 	shotty_hitman_spawn_room2_3.set_active()
 	zombie_spawn_room2_4.set_active()
+	grenade_spawn_room2_5.set_active()
+	sniper_spawn_room2_6.set_active()

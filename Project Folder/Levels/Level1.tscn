@@ -70,8 +70,10 @@ rotation = 4.71239
 scale = Vector2( 2, 2 )
 z_index = 5
 
-[node name="Door" parent="Rooms/Doors/Door4" instance=ExtResource( 9 )]
-position = Vector2( -767.998, 2496 )
+[node name="Door5" parent="Rooms" instance=ExtResource( 9 )]
+position = Vector2( 12896, 4288 )
+rotation = -1.5708
+scale = Vector2( 2, 2 )
 
 [node name="RoomTimer" type="Timer" parent="Rooms"]
 one_shot = true
@@ -158,7 +160,7 @@ position = Vector2( 10512, 4288 )
 texture = ExtResource( 15 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3413.25, 1209.12 )
+position = Vector2( 8624, 2752 )
 compass_controls = true
 face_mouse_control = false
 
@@ -201,6 +203,7 @@ spawn_interval = 3
 
 [node name="ZombieShottySpawn_Room2_1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 7569.72, 3488.41 )
+spawn_interval = 10
 shottyman_spawn = true
 
 [node name="ZombieHitmanSpawn_Room2_2" parent="Enemies" instance=ExtResource( 10 )]
@@ -209,13 +212,31 @@ hitman_spawn = true
 
 [node name="ShottyHitmanSpawn_Room2_3" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 6976, 2104 )
-spawn_interval = 10
+spawn_interval = 15
 zombie_spawn = false
 hitman_spawn = true
 shottyman_spawn = true
 
 [node name="ZombieSpawn_Room2_4" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 7032, 3336 )
+spawn_interval = 3
+
+[node name="GrenadeSpawn_Room2_5" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 6792, 2328 )
+spawn_interval = 10
+zombie_spawn = false
+grenademan_spawn = true
+
+[node name="SniperSpawn_Room2_6" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 7808, 3200 )
+spawn_interval = 10
+zombie_spawn = false
+sniper_spawn = true
+
+[node name="GrenadeSpawn_Corridor2_1" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 9856, 4872 )
+zombie_spawn = false
+grenademan_spawn = true
 
 [node name="Zombie" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 4216, 1648 )
@@ -254,13 +275,37 @@ position = Vector2( 2632, 1792 )
 position = Vector2( 2672, 1656 )
 
 [node name="Shottyman" parent="Enemies" instance=ExtResource( 16 )]
-position = Vector2( 3632, 216 )
+position = Vector2( 3496, 160 )
 
 [node name="Sniper" parent="Enemies" instance=ExtResource( 17 )]
 position = Vector2( 4640, 2720 )
 
 [node name="Grenade" parent="Enemies" instance=ExtResource( 18 )]
 position = Vector2( 3360, 3112 )
+
+[node name="Sniper2" parent="Enemies" instance=ExtResource( 17 )]
+position = Vector2( 7064, 3272 )
+
+[node name="Shottyman2" parent="Enemies" instance=ExtResource( 16 )]
+position = Vector2( 6768, 3256 )
+
+[node name="Zombie8" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 7584, 2600 )
+
+[node name="Zombie9" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 7576, 2664 )
+
+[node name="Zombie10" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 7576, 2848 )
+
+[node name="Zombie11" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 7568, 2936 )
+
+[node name="Turret2" parent="Enemies" instance=ExtResource( 13 )]
+position = Vector2( 7808, 2752 )
+
+[node name="Grenade2" parent="Enemies" instance=ExtResource( 18 )]
+position = Vector2( 7016, 2232 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
