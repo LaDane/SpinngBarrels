@@ -27,7 +27,6 @@ func set_active():
 func set_deactive():
 	active = false
 	$Timer.stop()
-	$Timer.wait_time = 999999
 
 func _on_Timer_timeout():
 	var distance_to_player = global_position.distance_to(Player.global_position)
