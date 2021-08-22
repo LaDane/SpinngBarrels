@@ -42,12 +42,10 @@ func _on_Projectile_body_entered(body):
 	if body.has_method("take_enemy_damage"):
 		body.take_enemy_damage(damage)
 		damaged_enemy = true
-		Globals.combo_count = Globals.combo_count + 1
-		get_tree().call_group("Interface", "display_combo", Globals.combo_count)
+		Globals.update_combo()
 	elif body.has_method("take_damage"):
 		body.take_damage(damage)
 	else:
 		if not damaged_enemy:
 			Globals.combo_count = 0
 		queue_free()
-		

@@ -19,7 +19,6 @@ func move_with_collision():
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision and collision.collider.has_method("take_damage") and weapon_ready:
-			print("Ouch!")
 			collision.collider.take_damage(attack_damage)
 			weapon_ready = false
 			$ReloadTime.wait_time = reload_time
