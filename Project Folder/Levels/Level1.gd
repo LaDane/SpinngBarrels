@@ -5,7 +5,7 @@ onready var RoomTimer = $Rooms/RoomTimer
 # Start area
 var zombie_spawn_start_area1
 var zombie_spawn_start_area2
-var shottyman_spawn_start_area1
+
 
 # Room 1
 var zombie_spawn_room1_1
@@ -13,6 +13,7 @@ var zombie_spawn_room1_2
 var hitman_spawn_room1_1
 var zombie_spawn_room1_3
 var shottyman_spawn_room1_1
+
 
 # Corridor 1
 var zombie_spawn_corrider1_1
@@ -30,10 +31,9 @@ func _ready():
 	# Starting area
 	zombie_spawn_start_area1 = $Enemies/ZombieSpawn_StartArea1
 	zombie_spawn_start_area2 = $Enemies/ZombieSpawn_StartArea2
-	shottyman_spawn_start_area1 = $Enemies/ShottymanSpawn_StartArea1
 	zombie_spawn_start_area1.set_active()
 	zombie_spawn_start_area2.set_active()
-	shottyman_spawn_start_area1.set_active()
+	
 	
 	# Room 1
 	zombie_spawn_room1_1 = $Enemies/ZombieSpawn_Room1_1
@@ -42,7 +42,7 @@ func _ready():
 	zombie_spawn_room1_3 = $Enemies/ZombieSpawn_Room1_3
 	shottyman_spawn_room1_1 = $Enemies/ShottymanSpawn_Room1_1
 
-	# Corrider 1
+	# Corridor 1
 	zombie_spawn_corrider1_1 = $Enemies/ZombieSpawn_Corridor1_1
 	
 	# Room 2
@@ -62,7 +62,7 @@ func _on_Room_1_body_entered(body):
 func active_room_1():
 	zombie_spawn_start_area1.set_deactive()
 	zombie_spawn_start_area2.set_deactive()
-	shottyman_spawn_start_area1.set_deactive()
+	
 	
 	zombie_spawn_room1_1.set_active()
 	zombie_spawn_room1_2.set_active()
