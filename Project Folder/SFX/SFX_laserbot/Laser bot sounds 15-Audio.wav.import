@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Laser bot sounds 15-Audio.wav-95e89e3b86009cdb07a02bb047b4436d.sample"
+
+[deps]
+
+source_file="res://SFX/SFX_laserbot/Laser bot sounds 15-Audio.wav"
+dest_files=[ "res://.import/Laser bot sounds 15-Audio.wav-95e89e3b86009cdb07a02bb047b4436d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
