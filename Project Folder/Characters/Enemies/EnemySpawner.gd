@@ -7,6 +7,7 @@ export var hitman_spawn = false
 export var shottyman_spawn = false
 export var robot_spawn = false
 export var grenademan_spawn = false
+export var sniper_spawn = false
 
 onready var Player = get_parent().get_parent().get_node("Player")
 var min_spawn_distance = 600
@@ -16,6 +17,7 @@ var hitman_scene = preload("res://Characters/Enemies/Hitman.tscn")
 var shottyman_scene = preload("res://Characters/Enemies/Shottyman.tscn")
 var robot_scene = preload("res://Characters/Enemies/Robot.tscn")
 var grenade_scene = preload("res://Characters/Enemies/Grenade.tscn")
+var sniper_scene = preload("res://Characters/Enemies/Sniper.tscn")
 
 func _ready():
 	$Timer.wait_time = spawn_interval
@@ -53,3 +55,7 @@ func _on_Timer_timeout():
 			var grenademan = robot_scene.instance()
 			grenademan.position = position 
 			get_parent().add_child(grenademan)
+		if sniper_spawn:
+			var sniper = sniper_scene.instance()
+			sniper.position = position 
+			get_parent().add_child(sniper)
