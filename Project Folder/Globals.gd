@@ -6,4 +6,3 @@ var camera = null
 
 var combo_count = 0
 var on_streak = false
-

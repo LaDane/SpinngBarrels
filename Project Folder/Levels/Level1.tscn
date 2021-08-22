@@ -87,7 +87,7 @@ tile_data = PoolIntArray( 1507368, 2, 0, 1507369, 2, 0, 1507370, 2, 0, 1507371, 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 419.284, 305.516 )
+position = Vector2( 3433.02, 1812.38 )
 compass_controls = true
 face_mouse_control = false
 health = 400
