@@ -11,7 +11,7 @@ var shottyman_spawn_start_area1
 var zombie_spawn_room1_1
 var zombie_spawn_room1_2
 var hitman_spawn_room1_1
-var hitman_spawn_room1_2
+var zombie_spawn_room1_3
 var shottyman_spawn_room1_1
 
 # Corridor 1
@@ -19,6 +19,11 @@ var zombie_spawn_corrider1_1
 
 # Room 2
 var zombie_spawn_room2_1
+var zombie_shotty_spawn_room2_1
+var zombie_hitman_spawn_room2_2
+var shotty_hitman_spawn_room2_3
+var zombie_spawn_room2_4
+
 
 func _ready():
 	# Getting spawners
@@ -34,7 +39,7 @@ func _ready():
 	zombie_spawn_room1_1 = $Enemies/ZombieSpawn_Room1_1
 	zombie_spawn_room1_2 = $Enemies/ZombieSpawn_Room1_2
 	hitman_spawn_room1_1 = $Enemies/HitmanSpawn_Room1_1
-	hitman_spawn_room1_2 = $Enemies/HitmanSpawn_Room1_2
+	zombie_spawn_room1_3 = $Enemies/ZombieSpawn_Room1_3
 	shottyman_spawn_room1_1 = $Enemies/ShottymanSpawn_Room1_1
 
 	# Corrider 1
@@ -42,6 +47,10 @@ func _ready():
 	
 	# Room 2
 	zombie_spawn_room2_1 = $Enemies/ZombieSpawn_Room2_1
+	zombie_shotty_spawn_room2_1 = $Enemies/ZombieShottySpawn_Room2_1
+	zombie_hitman_spawn_room2_2 = $Enemies/ZombieHitmanSpawn_Room2_2
+	shotty_hitman_spawn_room2_3 = $Enemies/ShottyHitmanSpawn_Room2_3
+	zombie_spawn_room2_4 = $Enemies/ZombieSpawn_Room2_4
 
 func _on_Room_1_body_entered(body):
 	if current_room < 1:
@@ -58,7 +67,7 @@ func active_room_1():
 	zombie_spawn_room1_1.set_active()
 	zombie_spawn_room1_2.set_active()
 	hitman_spawn_room1_1.set_active()
-	hitman_spawn_room1_2.set_active()
+	zombie_spawn_room1_3.set_active()
 	shottyman_spawn_room1_1.set_active()
 
 
@@ -76,7 +85,10 @@ func active_room_2():
 	zombie_spawn_room1_1.set_deactive()
 	zombie_spawn_room1_2.set_deactive()
 	hitman_spawn_room1_1.set_deactive()
-	hitman_spawn_room1_2.set_deactive()
+	zombie_spawn_room1_3.set_deactive()
 	shottyman_spawn_room1_1.set_deactive()
 	
-	zombie_spawn_room2_1.set_active()
+	zombie_shotty_spawn_room2_1.set_active()
+	zombie_hitman_spawn_room2_2.set_active()
+	shotty_hitman_spawn_room2_3.set_active()
+	zombie_spawn_room2_4.set_active()

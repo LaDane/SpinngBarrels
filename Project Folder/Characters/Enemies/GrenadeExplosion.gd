@@ -1,7 +1,7 @@
 extends Area2D
 
 var explosion_sfx = preload("res://SFX/SFX_guns/Kenney gun sound export Rocket hit Explosion.wav")
-var damage = 100
+var damage = 50
 
 func _ready():
 	$Audio.play(1.0)

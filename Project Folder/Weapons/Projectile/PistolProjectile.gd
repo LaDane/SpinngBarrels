@@ -26,17 +26,10 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		if collision.get_collider().has_method("take_enemy_damage"):
-			Globals.combo_count = Globals.combo_count + 1
-			get_tree().call_group("Interface", "display_combo", Globals.combo_count)
+			Globals.update_combo()
 			collision.get_collider().take_enemy_damage(damage)
 		elif collision.get_collider().has_method("take_damage"):
 			collision.get_collider().take_damage(damage)
 		else:
 			Globals.combo_count = 0
-		
-		print(Globals.combo_count)
 		queue_free()
-
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
-

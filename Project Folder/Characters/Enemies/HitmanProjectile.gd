@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var direction
 var velocity = Vector2()
-var speed = 350
+var speed = 650
 var damage = 34
 #var on_ready = false
 
@@ -31,7 +31,3 @@ func _physics_process(delta):
 			collision.get_collider().take_damage(damage)
 		
 		queue_free()
-
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
-

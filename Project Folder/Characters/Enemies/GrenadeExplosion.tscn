@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Weapons/Projectile/RocketExplosion.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Enemies/GrenadeExplosion.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Weapons/Explosions/explosion1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Weapons/Explosions/explosionSmoke5.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Weapons/Explosions/explosionSmoke2.png" type="Texture" id=4]

@@ -4,6 +4,7 @@ export var compass_controls = false
 export var face_mouse_control = true
 
 export var health = 200
+export var max_health = 200
 var is_dead = false
 var movement_speed = 225
 var velocity = Vector2.ZERO
@@ -78,7 +79,7 @@ var scent_trail = []
 
 func _ready():
 	$ScentTimer.connect("timeout", self, "add_scent")
-	$Camera2D/Interface/VBoxContainer2/ProgressBar.max_value = health
+	$Camera2D/Interface/VBoxContainer2/ProgressBar.max_value = max_health
 	$Camera2D/Interface/VBoxContainer2/ProgressBar.value = health
 	
 	randomize()
@@ -305,7 +306,7 @@ func rotate_weapon_wheel():
 		visible_wheel_positions[i] = visible_wheel_positions[i] - 1
 		if visible_wheel_positions[i] < 0:
 			visible_wheel_positions[i] = 5
-	print(visible_wheel_positions)
+#	print(visible_wheel_positions)
 			
 	rotate_tween.interpolate_property(weapon_wheel_sprite, "rotation_degrees", weapon_wheel_sprite.rotation_degrees, weapon_wheel_sprite.rotation_degrees + 60, 0.3, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	rotate_tween.start()
@@ -387,3 +388,49 @@ func get_weapon_sprite(gun_rotation_index):
 	
 #var gun_rotation = ["assault", "laser", "pistol", "rocket_launcher", "shotgun", "smg", "sniper"]
 
+func combo_heal():
+	if Globals.combo_count == 5:
+		health = health + 15
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 10:
+		health = health + 20
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 15:
+		health = health + 30
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 20:
+		health = health + 50
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 25:
+		health = health + 75
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 30:
+		health = health + 100
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 35:
+		health = health + 250
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 40:
+		health = health + 300
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 45:
+		health = health + 400
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 50:
+		health = health + 500
+		if health >= max_health:
+			health = max_health
+	if Globals.combo_count == 55:
+		health = health + 600
+		if health >= max_health:
+			health = max_health
+	$Camera2D/Interface/VBoxContainer2/ProgressBar.value = health
