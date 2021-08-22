@@ -6,6 +6,7 @@ export var zombie_spawn = true
 export var hitman_spawn = false
 export var shottyman_spawn = false
 export var robot_spawn = false
+export var grenademan_spawn = false
 
 onready var Player = get_parent().get_parent().get_node("Player")
 var min_spawn_distance = 600
@@ -14,6 +15,7 @@ var zombie_scene = preload("res://Characters/Enemies/Zombie.tscn")
 var hitman_scene = preload("res://Characters/Enemies/Hitman.tscn")
 var shottyman_scene = preload("res://Characters/Enemies/Shottyman.tscn")
 var robot_scene = preload("res://Characters/Enemies/Robot.tscn")
+var grenade_scene = preload("res://Characters/Enemies/Grenade.tscn")
 
 func _ready():
 	$Timer.wait_time = spawn_interval
@@ -47,3 +49,7 @@ func _on_Timer_timeout():
 			var robot = robot_scene.instance()
 			robot.position = position 
 			get_parent().add_child(robot)
+		if grenademan_spawn:
+			var grenademan = robot_scene.instance()
+			grenademan.position = position 
+			get_parent().add_child(grenademan)
