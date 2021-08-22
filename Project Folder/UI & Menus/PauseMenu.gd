@@ -55,6 +55,7 @@ func _on_ParticlesButton_pressed():
 
 
 func _on_BackButton_pressed():
+	$Music.stop()
 	get_tree().paused = false
 	visible = false
 

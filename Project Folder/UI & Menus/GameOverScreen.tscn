@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI & Menus/GameOverScreen.gd" type="Script" id=1]
 [ext_resource path="res://UI & Menus/gameplay_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Assets/Fonts/Kenney Future.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Music/Lobby chill music.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -85,6 +86,9 @@ margin_bottom = 164.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 2 )
 text = "Main Menu"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/TryAgain" to="." method="_on_TryAgain_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
