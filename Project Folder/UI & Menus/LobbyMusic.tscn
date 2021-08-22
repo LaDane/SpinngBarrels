@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Music/Lobby chill music.wav" type="AudioStream" id=1]
+[ext_resource path="res://UI & Menus/LobbyMusic.gd" type="Script" id=1]
+[ext_resource path="res://Music/title Screen music first.wav" type="AudioStream" id=2]
 
 [node name="LobbyMusic" type="AudioStreamPlayer"]
-stream = ExtResource( 1 )
-autoplay = true
+stream = ExtResource( 2 )
 bus = "Music_Levels"
+script = ExtResource( 1 )
+
+[connection signal="finished" from="." to="." method="_on_LobbyMusic_finished"]

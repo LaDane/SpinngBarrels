@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready():
+	LobbyMusic.in_game = false
 	if not LobbyMusic.playing:
 		LobbyMusic.playing = true
 

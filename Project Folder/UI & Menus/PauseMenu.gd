@@ -8,7 +8,6 @@ func _ready():
 
 
 func _input(event):
-	print(visible)
 	if Input.is_action_just_pressed("pause"):
 		if not visible:
 			open_popup()
@@ -19,11 +18,13 @@ func _input(event):
 func open_popup():
 	popup_centered()
 	get_tree().paused = true
+	$Music.play()
 
 
 func close_popup():
 	visible = false
 	get_tree().paused = false
+	$Music.stop()
 
 
 func display_popup():

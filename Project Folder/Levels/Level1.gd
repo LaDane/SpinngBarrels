@@ -31,8 +31,9 @@ var sniper_spawn_room2_6
 var grenade_spawn_corridor2_1
 
 func _ready():
-	LobbyMusic.playing = false
 	$Music.playing = true
+	LobbyMusic.playing = false
+	LobbyMusic.in_game = true
 	
 	# Getting spawners
 	# Starting area
@@ -64,6 +65,7 @@ func _ready():
 	# Corridor 2
 	grenade_spawn_corridor2_1 = $Enemies/GrenadeSpawn_Corridor2_1
 
+
 func _on_Room_1_body_entered(body):
 	if current_room < 1:
 		RoomTimer.wait_time = 90
@@ -94,6 +96,9 @@ func _on_RoomTimer_timeout():
 
 
 func _on_Room_2_body_entered(body):
+	$Music.stream = load("res://Music/Action music.wav")
+	$Music.play()
+	
 	current_room = 2
 	RoomTimer.wait_time = 90
 	RoomTimer.start()
