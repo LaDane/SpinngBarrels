@@ -206,7 +206,7 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="HBoxContainer"]
-margin_right = -20.0
+margin_right = 200.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 2 )
