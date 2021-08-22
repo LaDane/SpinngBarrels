@@ -88,7 +88,12 @@ func die():
 	dead_timer.set_one_shot(true)
 	self.add_child(dead_timer)
 	dead_timer.start()
+	
 	visible = false
+	set_collision_layer_bit(2, false)
+	set_collision_mask_bit(0, false)
+	$CollisionShape2D.disabled = true
+	
 	yield(dead_timer, "timeout")
 	print("deleted ", name)
 	
