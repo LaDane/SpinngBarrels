@@ -56,3 +56,8 @@ func _on_ParticlesButton_pressed():
 func _on_BackButton_pressed():
 	get_tree().paused = false
 	visible = false
+
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://UI & Menus/Main Menu.tscn")
+	get_tree().paused = false

@@ -192,9 +192,29 @@ margin_bottom = 291.0
 theme = ExtResource( 2 )
 text = "Back"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 50.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_right = -20.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 200, 50 )
+theme = ExtResource( 2 )
+text = "Main Menu"
+
 [connection signal="value_changed" from="NinePatchRect/VBoxContainer/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
 [connection signal="value_changed" from="NinePatchRect/VBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="NinePatchRect/VBoxContainer/SoundEffectsSlider" to="." method="_on_SoundEffectsSlider_value_changed"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer/FullScreenButton" to="." method="_on_FullScreenButton_pressed"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer2/ParticlesButton" to="." method="_on_ParticlesButton_pressed"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_Button_pressed"]

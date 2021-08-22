@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Kenney Jam 2021"
-run/main_scene="res://Levels/Level1.tscn"
+run/main_scene="res://UI & Menus/Main Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

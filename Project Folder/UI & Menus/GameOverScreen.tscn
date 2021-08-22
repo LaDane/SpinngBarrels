@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI & Menus/GameOverScreen.gd" type="Script" id=1]
+[ext_resource path="res://UI & Menus/gameplay_theme.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/Fonts/Kenney Future.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
+
+[node name="GameOverScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.414185
+margin_top = -0.529724
+margin_right = 0.414185
+margin_bottom = -0.529724
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 126.0
+margin_top = 141.0
+margin_right = 898.0
+margin_bottom = 458.0
+custom_constants/separation = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 772.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Over!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 153.0
+margin_right = 772.0
+margin_bottom = 317.0
+custom_constants/separation = 50
+
+[node name="TryAgain" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+margin_right = 772.0
+margin_bottom = 57.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 2 )
+text = "Try Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 772.0
+margin_bottom = 164.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 2 )
+text = "Main Menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/TryAgain" to="." method="_on_TryAgain_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]

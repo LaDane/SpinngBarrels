@@ -79,6 +79,8 @@ var bullet_shells_scene = preload("res://Particles/Bullet Particles.tscn")
 const scent_scene = preload("res://Characters/Player/Scent.tscn")
 var scent_trail = []
 
+var invincible = false
+
 
 func _ready():
 	$ScentTimer.connect("timeout", self, "add_scent")
@@ -292,12 +294,15 @@ func remove_weapon():
 
 
 func take_damage(dmg):
-	health = health - dmg
-	$Camera2D/Interface/TextureRect/AnimationPlayer.play("take_damage")
-	Globals.camera.shake(300, 0.5, 300)
-	$Camera2D/Interface/VBoxContainer2/ProgressBar.value = health
-	if health <= 0 and is_dead == false:
-		player_die()
+	if not invincible:
+		health = health - dmg
+		$Camera2D/Interface/TextureRect/AnimationPlayer.play("take_damage")
+		Globals.camera.shake(300, 0.5, 300)
+		$Camera2D/Interface/VBoxContainer2/ProgressBar.value = health
+		if health <= 0 and is_dead == false:
+			player_die()
+		$InvincibleTimer.start()
+		invincible = true
 
 
 func player_die():
@@ -309,6 +314,7 @@ func player_die():
 		
 	$AnimatedSprite.play("dead")
 	z_index = 0
+	get_tree().change_scene("res://UI & Menus/GameOverScreen.tscn")
 	print("You have died")
 
 
@@ -418,3 +424,7 @@ func combo_heal():
 		if health >= max_health:
 			health = max_health
 	$Camera2D/Interface/VBoxContainer2/ProgressBar.value = health
+
+
+func _on_InvincibleTimer_timeout():
+	invincible = false
