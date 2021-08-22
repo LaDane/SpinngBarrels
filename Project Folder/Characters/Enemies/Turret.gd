@@ -52,14 +52,15 @@ func fire_weapon():
 
 
 func _on_GunTimer_timeout():
-	fire_weapon();
-	fired_shots = fired_shots + 1
-	if fired_shots > allowed_fired_shots:
-		timer_running = false
-		weapon_ready = false
-		fired_shots = 0
-	else:
-		$GunTimer.start()
+	if !is_dead:
+		fire_weapon();
+		fired_shots = fired_shots + 1
+		if fired_shots > allowed_fired_shots:
+			timer_running = false
+			weapon_ready = false
+			fired_shots = 0
+		else:
+			$GunTimer.start()
 	
 func take_enemy_damage(dmg):
 	health = health - dmg

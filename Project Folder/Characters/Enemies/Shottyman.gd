@@ -9,7 +9,7 @@ var timer_running = false
 
 func _ready():
 	speed = 150
-	health = 200
+	health = 100
 	attack_damage = 25
 	reload_time = 3
 	attack_distance = 250
@@ -55,14 +55,15 @@ func fire_weapon():
 	get_parent().add_child(bullet_shells)
 
 func _on_GunTimer_timeout():
-	fire_weapon();
-	fired_shots = fired_shots + 1
-	if fired_shots < allowed_fired_shots:
-		$GunTimer.start()	
-	else:
-		weapon_ready = false
-		timer_running = false
-		fired_shots = 0
+	if !is_dead:
+		fire_weapon();
+		fired_shots = fired_shots + 1
+		if fired_shots < allowed_fired_shots:
+			$GunTimer.start()	
+		else:
+			weapon_ready = false
+			timer_running = false
+			fired_shots = 0
 		
 func take_enemy_damage(dmg):
 	health = health - dmg

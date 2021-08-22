@@ -21,7 +21,7 @@ func check_range():
 		if (global_position.distance_to(Player.global_position)) <= attack_distance:
 			$RotationNode.look_at(Player.position)
 			speed = 0
-			if weapon_ready:
+			if weapon_ready and !is_dead:
 				fire_weapon();
 				weapon_ready = false
 		else:

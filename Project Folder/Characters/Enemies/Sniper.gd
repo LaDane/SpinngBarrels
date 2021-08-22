@@ -27,7 +27,7 @@ func check_range():
 			$Line2D.points[0] = $RotationNode/Position2D.global_position
 			$Line2D.points[1] = Player.global_position
 			speed = 0
-			if weapon_ready:
+			if weapon_ready and !is_dead:
 				fire_weapon();
 				weapon_ready = false
 		else:
