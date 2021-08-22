@@ -95,6 +95,5 @@ func die():
 	$CollisionShape2D.disabled = true
 	
 	yield(dead_timer, "timeout")
-	print("deleted ", name)
 	
 	queue_free()

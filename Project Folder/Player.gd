@@ -314,6 +314,14 @@ func player_die():
 		
 	$AnimatedSprite.play("dead")
 	z_index = 0
+	
+	var dead_timer = Timer.new()
+	dead_timer.set_wait_time(3)
+	dead_timer.set_one_shot(true)
+	self.add_child(dead_timer)
+	dead_timer.start()
+	yield(dead_timer, "timeout")
+	
 	get_tree().change_scene("res://UI & Menus/GameOverScreen.tscn")
 	print("You have died")
 
