@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Tiles/Walls and Floors/FloorTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tiles/Furniture/Furniture.tscn" type="PackedScene" id=2]
@@ -17,6 +17,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 863.477, 415.967 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 600.222, 771.836 )
+
 [node name="Level1" type="Node2D"]
 script = ExtResource( 12 )
 
@@ -30,6 +33,15 @@ collision_layer = 64
 position = Vector2( 3424.73, 1889.77 )
 z_index = 2
 shape = SubResource( 1 )
+
+[node name="Room 2" type="Area2D" parent="Rooms"]
+monitorable = false
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 2"]
+position = Vector2( 7316.47, 2750.5 )
+z_index = 2
+shape = SubResource( 2 )
 
 [node name="Doors" type="Node2D" parent="Rooms"]
 
@@ -88,38 +100,55 @@ tile_data = PoolIntArray( 1507368, 2, 0, 1507369, 2, 0, 1507370, 2, 0, 1507371, 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3425.46, 774.205 )
+position = Vector2( 938.27, 312.726 )
 compass_controls = true
 face_mouse_control = false
 health = 400
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemySpawner" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 3131.23, 2236.91 )
-
-[node name="EnemySpawner2" parent="Enemies" instance=ExtResource( 10 )]
+[node name="ZombieSpawn_StartArea1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 1861.97, -124.747 )
 spawn_interval = 2
 
-[node name="EnemySpawner3" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 2924.33, 1566.76 )
+[node name="ZombieSpawn_StartArea2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 1845.97, 749.253 )
+spawn_interval = 2
+
+[node name="ShottymanSpawn_StartArea1" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 3605.88, 222.867 )
+spawn_interval = 6
+zombie_spawn = false
+shottyman_spawn = true
+
+[node name="ZombieSpawn_Room1_1" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 3428.92, 2194.96 )
+spawn_interval = 4
+
+[node name="ZombieSpawn_Room1_2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 4102.18, 1641.69 )
+spawn_interval = 4
+
+[node name="HitmanSpawn_Room1_1" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 2911.62, 1611.26 )
 zombie_spawn = false
 hitman_spawn = true
 
-[node name="EnemySpawner4" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 3960.86, 2154.77 )
+[node name="HitmanSpawn_Room1_2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 3960.86, 2152.25 )
 zombie_spawn = false
 hitman_spawn = true
 
-[node name="EnemySpawner5" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 4180.58, 1582.36 )
+[node name="ShottymanSpawn_Room1_1" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 2886.9, 2215.54 )
+zombie_spawn = false
+shottyman_spawn = true
 
-[node name="EnemySpawner6" parent="Enemies" instance=ExtResource( 10 )]
+[node name="ZombieSpawn_Corridor1_1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 4773.88, 2616.39 )
-zombie_spawn = false
+spawn_interval = 3
 
-[node name="EnemySpawner7" parent="Enemies" instance=ExtResource( 10 )]
+[node name="ZombieSpawn_Room2_1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 7569.72, 3488.41 )
 
 [node name="Zombie" parent="Enemies" instance=ExtResource( 3 )]
@@ -138,4 +167,5 @@ position = Vector2( 3686.57, 1381.63 )
 position = Vector2( 3163.12, 1380.53 )
 
 [connection signal="body_entered" from="Rooms/Room 1" to="." method="_on_Room_1_body_entered"]
+[connection signal="body_entered" from="Rooms/Room 2" to="." method="_on_Room_2_body_entered"]
 [connection signal="timeout" from="Rooms/RoomTimer" to="." method="_on_RoomTimer_timeout"]

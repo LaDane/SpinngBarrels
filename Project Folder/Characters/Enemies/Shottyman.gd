@@ -2,15 +2,16 @@ extends "res://Characters/Enemies/EnemyBaseScript.gd"
 
 var pistol_projectile_scene = preload("res://Characters/Enemies/HitmanProjectile.tscn")
 var fired_shots = 0
-var allowed_fired_shots = 2
+var allowed_fired_shots = 3
 var timer_running = false
 
+
 func _ready():
-	speed = 0
-	health = 700
-	attack_damage = 15
-	reload_time = 2
-	attack_distance = 400
+	speed = 150
+	health = 200
+	attack_damage = 25
+	reload_time = 3
+	attack_distance = 250
 	
 	set_reload_time(reload_time)
 
@@ -21,19 +22,22 @@ func _physics_process(delta):
 
 func check_range():
 	if player_visible:
-		$RotationNode.look_at(Player.position)
 		if (global_position.distance_to(Player.global_position)) <= attack_distance:
-			speed = 0
-			if weapon_ready and !timer_running:
+			$RotationNode.look_at(Player.position)
+			speed = 150
+			if weapon_ready and not timer_running:
 				timer_running = true
+				weapon_ready = false				
+				$AudioWeapon.play(1.2)				
 				$GunTimer.start()
-				$AudioWeapon.play(1.0)
-#		else:
-#			speed = 120
+		else:
+			speed = 150
 
 
 func fire_weapon():
-	var projectile_object = pistol_projectile_scene.instance()
+	var projectile_object
+	projectile_object = pistol_projectile_scene.instance()
+	$AudioWeapon.play(0.95)
 	
 	projectile_object.set_collision_layer_bit(4, false)
 	projectile_object.set_collision_layer_bit(5, true)
@@ -47,10 +51,10 @@ func fire_weapon():
 func _on_GunTimer_timeout():
 	fire_weapon();
 	fired_shots = fired_shots + 1
-	if fired_shots > allowed_fired_shots:
-		timer_running = false
-		weapon_ready = false
-		fired_shots = 0
+	if fired_shots < allowed_fired_shots:
+		$GunTimer.start()	
 	else:
-		$GunTimer.start()
-	
+		weapon_ready = false
+		timer_running = false
+		fired_shots = 0
+		
