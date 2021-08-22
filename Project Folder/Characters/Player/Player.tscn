@@ -26,7 +26,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.7423
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ) ],
 "loop": true,
@@ -42,7 +42,6 @@ animations = [ {
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-z_index = 10
 collision_mask = 14
 script = ExtResource( 1 )
 
@@ -70,7 +69,7 @@ script = ExtResource( 22 )
 position = Vector2( 6.49838, 11.0503 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "walk"
 
 [node name="ScentTimer" type="Timer" parent="."]
@@ -108,5 +107,3 @@ one_shot = true
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="ChangeWeaponTimer" to="." method="_on_ChangeWeaponTimer_timeout"]
-
-[editable path="Camera2D/Interface"]

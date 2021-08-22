@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI & Menus/Main Menu.gd" type="Script" id=1]
+[ext_resource path="res://UI & Menus/gameplay_theme.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/UI/panel_blue.png" type="Texture" id=3]
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -150.0
+margin_right = 100.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 300 )
+texture = ExtResource( 3 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayGame" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 34.0
+margin_right = 200.0
+margin_bottom = 77.0
+theme = ExtResource( 2 )
+text = "Play Game"
+
+[node name="Options" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 97.0
+margin_right = 200.0
+margin_bottom = 140.0
+theme = ExtResource( 2 )
+text = "Options"
+
+[node name="Credits" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 160.0
+margin_right = 200.0
+margin_bottom = 203.0
+theme = ExtResource( 2 )
+text = "Credits"
+
+[node name="Exit Game" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 223.0
+margin_right = 200.0
+margin_bottom = 266.0
+theme = ExtResource( 2 )
+text = "Exit Game"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.414185
+margin_top = -0.529724
+margin_right = 0.414185
+margin_bottom = -0.529724
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/PlayGame" to="." method="_on_PlayGame_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Exit Game" to="." method="_on_Exit_Game_pressed"]
