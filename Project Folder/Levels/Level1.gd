@@ -31,6 +31,7 @@ var sniper_spawn_room2_6
 var grenade_spawn_corridor2_1
 
 func _ready():
+	$CanvasLayer/Control/VBoxContainer.visible = false
 	$Music.playing = true
 	LobbyMusic.playing = false
 	LobbyMusic.in_game = true
@@ -68,6 +69,7 @@ func _ready():
 
 func _on_Room_1_body_entered(body):
 	if current_room < 1:
+		$CanvasLayer/Control/VBoxContainer.visible = true
 		RoomTimer.wait_time = 90
 		RoomTimer.start()
 		current_room = 1
@@ -98,6 +100,7 @@ func _on_RoomTimer_timeout():
 func _on_Room_2_body_entered(body):
 	$Music.stream = load("res://Music/Action music.wav")
 	$Music.play()
+	$CanvasLayer/Control/VBoxContainer.visible = true
 	
 	current_room = 2
 	RoomTimer.wait_time = 90
@@ -117,3 +120,8 @@ func active_room_2():
 	zombie_spawn_room2_4.set_active()
 	grenade_spawn_room2_5.set_active()
 	sniper_spawn_room2_6.set_active()
+
+
+func _process(delta):
+	var reduced = "%.2f" % RoomTimer.time_left
+	$CanvasLayer/Control/VBoxContainer/Label.text = String(reduced)
