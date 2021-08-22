@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/robot.png-2892d11ad2868ad1bc84ec8169360f45.stex"
+path="res://.import/panel_beige.png-1fb9ad1d1567a5e2e3f4ad3eada8910a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Robot/robot.png"
-dest_files=[ "res://.import/robot.png-2892d11ad2868ad1bc84ec8169360f45.stex" ]
+source_file="res://Assets/UI/panel_beige.png"
+dest_files=[ "res://.import/panel_beige.png-1fb9ad1d1567a5e2e3f4ad3eada8910a.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

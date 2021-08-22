@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Tiles/Walls and Floors/FloorTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tiles/Furniture/Furniture.tscn" type="PackedScene" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://Characters/Enemies/Turret.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Tiles/Arrow.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Tiles/tank_arrowFull.png" type="Texture" id=15]
+[ext_resource path="res://Characters/Enemies/Shottyman.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Characters/Enemies/Sniper.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Characters/Enemies/Grenade.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Music/Standard music.wav" type="AudioStream" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 863.477, 415.967 )
@@ -90,7 +94,6 @@ tile_data = PoolIntArray( -393191, 0, 0, -393185, 0, 0, -196604, 0, 0, -196600, 
 
 [node name="Furniture" parent="LevelNavigation" instance=ExtResource( 2 )]
 scale = Vector2( 1, 1 )
-z_index = 1
 cell_size = Vector2( 64, 64 )
 tile_data = PoolIntArray( 131123, 0, 0, 131124, 2, 0, 131125, 0, 0, 196660, 3, 0, 327737, 5, 0, 327738, 5, 0, 393273, 0, 0, 458800, 4, 0, 458801, 2, 0, 458809, 2, 0, 458810, 3, 0, 524337, 0, 0, 524346, 2, 0, 589873, 1, 0, 1507392, 1, 0, 1507393, 0, 0, 1507394, 0, 0, 1572930, 0, 0, 1638449, -1610612728, 0, 1638457, -1073741816, 0, 1703980, -1610612726, 0, 1703983, -1073741811, 0, 1769516, -1610612727, 0, 1835057, 17, 0, 1835065, 17, 0, 2031679, -1610612720, 0, 2031680, -1610612718, 0, 2031681, -1073741808, 0, 2097197, -1610612736, 0, 2097198, 1610612757, 0, 2097215, -1610612720, 0, 2097217, -1073741808, 0, 2162729, -1610612721, 0, 2162730, -1610612717, 0, 2162731, -1073741809, 0, 2162751, -1610612720, 0, 2162753, -1073741808, 0 )
 
@@ -125,18 +128,15 @@ texture = ExtResource( 15 )
 [node name="tank_arrowFull4" type="Sprite" parent="Environment"]
 position = Vector2( 3581.09, 2920.67 )
 rotation = 0.00106601
-scale = Vector2( 1, 1 )
 texture = ExtResource( 15 )
 
 [node name="tank_arrowFull5" type="Sprite" parent="Environment"]
 position = Vector2( 5010.43, 2934.15 )
 rotation = -0.60719
-scale = Vector2( 1, 1 )
 texture = ExtResource( 15 )
 
 [node name="tank_arrowFull6" type="Sprite" parent="Environment"]
 position = Vector2( 6012.05, 2751.89 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 15 )
 
 [node name="tank_arrowFull7" type="Sprite" parent="Environment"]
@@ -158,10 +158,9 @@ position = Vector2( 10512, 4288 )
 texture = ExtResource( 15 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3424, 1208 )
+position = Vector2( 3413.25, 1209.12 )
 compass_controls = true
 face_mouse_control = false
-health = 400
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -173,12 +172,6 @@ spawn_interval = 2
 position = Vector2( 1845.97, 749.253 )
 spawn_interval = 2
 
-[node name="ShottymanSpawn_StartArea1" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 3605.88, 222.867 )
-spawn_interval = 15
-zombie_spawn = false
-shottyman_spawn = true
-
 [node name="ZombieSpawn_Room1_1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 3440, 2232 )
 spawn_interval = 3
@@ -188,16 +181,17 @@ position = Vector2( 4160, 1568 )
 spawn_interval = 3
 
 [node name="HitmanSpawn_Room1_1" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 3032, 1904 )
+position = Vector2( 4008, 2216 )
 zombie_spawn = false
 hitman_spawn = true
 
 [node name="ZombieSpawn_Room1_3" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 4040, 2224 )
+position = Vector2( 2912, 2288 )
 spawn_interval = 3
 
 [node name="ShottymanSpawn_Room1_1" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 2824, 2280 )
+position = Vector2( 2792, 1520 )
+spawn_interval = 10
 zombie_spawn = false
 shottyman_spawn = true
 
@@ -224,7 +218,7 @@ shottyman_spawn = true
 position = Vector2( 7032, 3336 )
 
 [node name="Zombie" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 4139.54, 1671.39 )
+position = Vector2( 4216, 1648 )
 
 [node name="Turret" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 3424, 2136 )
@@ -240,6 +234,37 @@ position = Vector2( 7360, 3392 )
 
 [node name="Turret3" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 3168, 680 )
+
+[node name="Zombie2" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 2608, 1520 )
+
+[node name="Zombie3" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 3768, 2264 )
+
+[node name="Zombie4" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 3096, 2240 )
+
+[node name="Zombie5" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 2720, 1952 )
+
+[node name="Zombie6" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 2632, 1792 )
+
+[node name="Zombie7" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 2672, 1656 )
+
+[node name="Shottyman" parent="Enemies" instance=ExtResource( 16 )]
+position = Vector2( 3632, 216 )
+
+[node name="Sniper" parent="Enemies" instance=ExtResource( 17 )]
+position = Vector2( 4640, 2720 )
+
+[node name="Grenade" parent="Enemies" instance=ExtResource( 18 )]
+position = Vector2( 3360, 3112 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+bus = "Music_Levels"
 
 [connection signal="body_entered" from="Rooms/Room 1" to="." method="_on_Room_1_body_entered"]
 [connection signal="body_entered" from="Rooms/Room 2" to="." method="_on_Room_2_body_entered"]

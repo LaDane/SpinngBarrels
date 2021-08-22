@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/robot.png-2892d11ad2868ad1bc84ec8169360f45.stex"
+path="res://.import/tank_arrowFull.png-e38d2d50a4d86c19c15592fd7d986d19.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Robot/robot.png"
-dest_files=[ "res://.import/robot.png-2892d11ad2868ad1bc84ec8169360f45.stex" ]
+source_file="res://Tiles/tank_arrowFull.png"
+dest_files=[ "res://.import/tank_arrowFull.png-e38d2d50a4d86c19c15592fd7d986d19.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
