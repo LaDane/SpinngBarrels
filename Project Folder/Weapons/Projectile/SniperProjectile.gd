@@ -34,7 +34,3 @@ func _physics_process(delta):
 			Globals.combo_count = 0
 		
 		queue_free()
-
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
-

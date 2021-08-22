@@ -42,6 +42,14 @@ autostart = true
 [node name="ReloadTime" type="Timer" parent="."]
 autostart = true
 
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 41.1505, 8.47002, 46.0434, 8.45496 )
+width = 3.0
+default_color = Color( 0.996078, 0.0745098, 0.180392, 0.392157 )
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
 [node name="RotationNode" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="RotationNode"]
@@ -55,9 +63,3 @@ stream = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hit_animation = SubResource( 2 )
-
-[node name="Line2D" type="Line2D" parent="."]
-z_index = 5
-points = PoolVector2Array( 41.1505, 8.47002, 41.0453, 8.57513 )
-width = 1.0
-default_color = Color( 0.996078, 0.0745098, 0.180392, 1 )

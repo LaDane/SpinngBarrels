@@ -31,7 +31,3 @@ func _physics_process(delta):
 			collision.get_collider().take_damage(damage)
 		
 		queue_free()
-
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
-

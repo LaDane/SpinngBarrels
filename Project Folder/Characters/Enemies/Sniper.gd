@@ -7,33 +7,33 @@ func _ready():
 	health = 100
 	attack_damage = 50
 	reload_time = 3
-	attack_distance = 450
+	attack_distance = 750
 	
 	set_reload_time(reload_time)
 	$Line2D.visible = false
 
 
 func _physics_process(delta):
+	$Line2D.global_position = Vector2.ZERO
 	check_range()
 
 
 func check_range():
 	if player_visible:
-		$Line2D.visible = true
-		$Line2D.points[0] = $RotationNode/Position2D.global_position
-		$Line2D.points[1] = Player.global_position
-		draw_line($RotationNode/Position2D.global_position, Player.global_position, Color.red, 1)
-		print($Line2D.points)
 		if (global_position.distance_to(Player.global_position)) <= attack_distance:
 			$RotationNode.look_at(Player.position)
+			$Line2D.visible = true
+			$Line2D.points[0] = $RotationNode/Position2D.global_position
+			$Line2D.points[1] = Player.global_position
 			speed = 0
 			if weapon_ready:
 				fire_weapon();
 				weapon_ready = false
 		else:
 			speed = 120
+			$Line2D.visible = false	
 	else:
-		$Line2D.visible = false
+		$Line2D.visible = false	
 
 
 func fire_weapon():

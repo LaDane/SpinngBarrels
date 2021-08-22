@@ -39,8 +39,3 @@ func _physics_process(delta):
 		get_parent().add_child(explosion_object)
 		explosion_object.position = $ExplosionPoint.global_position 
 		queue_free()
-
-func _on_VisibilityNotifier2D_screen_exited():
-#	queue_free()
-	pass
-
