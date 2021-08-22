@@ -46,9 +46,6 @@ script = ExtResource( 10 )
 
 [node name="PauseMenu" parent="." instance=ExtResource( 13 )]
 
-[node name="ColorRect" parent="PauseMenu/CanvasLayer" index="0"]
-color = Color( 0, 0, 0, 0.74902 )
-
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0

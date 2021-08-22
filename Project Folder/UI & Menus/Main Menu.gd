@@ -1,6 +1,9 @@
 extends Control
 
 
+func _ready():
+	if not LobbyMusic.playing:
+		LobbyMusic.playing = true
 
 
 func _on_PlayGame_pressed():

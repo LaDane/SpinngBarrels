@@ -27,6 +27,9 @@ var zombie_spawn_room2_4
 
 
 func _ready():
+	LobbyMusic.playing = false
+	$Music.playing = true
+	
 	# Getting spawners
 	# Starting area
 	zombie_spawn_start_area1 = $Enemies/ZombieSpawn_StartArea1

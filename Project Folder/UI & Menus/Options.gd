@@ -13,12 +13,12 @@ func _on_MasterSlider_value_changed(value):
 
 func _on_MusicSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(1, value)
-	Globals.master_volume = value
+	Globals.music_volume = value
 
 
 func _on_SoundEffectsSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(2, value)
-	Globals.master_volume = value
+	Globals.SFX_volume = value
 
 
 func _on_FullScreenButton_pressed():

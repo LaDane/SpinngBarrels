@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Globals.gd"
+LobbyMusic="*res://UI & Menus/LobbyMusic.tscn"
 
 [display]
 
