@@ -30,10 +30,10 @@ extents = Vector2( 863.477, 415.967 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 600.222, 771.836 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 850.976, 913.883 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 40
 font_data = ExtResource( 21 )
 
@@ -56,7 +56,7 @@ monitorable = false
 collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 2"]
-position = Vector2( 7316.47, 2750.5 )
+position = Vector2( 7316.47, 2752.09 )
 z_index = 2
 shape = SubResource( 2 )
 
@@ -67,7 +67,7 @@ collision_layer = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 3"]
 position = Vector2( 13747.1, 4312.8 )
 z_index = 2
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Doors" type="Node2D" parent="Rooms"]
 
@@ -268,7 +268,7 @@ position = Vector2( 3424, 2136 )
 position = Vector2( 7360, 2752 )
 
 [node name="Turret7" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( 7360, 2112 )
+position = Vector2( 7361.26, 2109.48 )
 
 [node name="Turret6" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 7360, 3392 )
@@ -325,7 +325,7 @@ position = Vector2( 7568, 2936 )
 position = Vector2( 7808, 2752 )
 
 [node name="Grenade2" parent="Enemies" instance=ExtResource( 18 )]
-position = Vector2( 7016, 2232 )
+position = Vector2( 7015.16, 2232.84 )
 
 [node name="GrenadeSpawn_Corridor2_2" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 9856, 4872 )
@@ -496,7 +496,7 @@ margin_top = 53.0
 margin_right = 442.0
 margin_bottom = 98.0
 theme = ExtResource( 20 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Door unlocks in:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -507,7 +507,7 @@ margin_top = 102.0
 margin_right = 442.0
 margin_bottom = 147.0
 theme = ExtResource( 20 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

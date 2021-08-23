@@ -52,7 +52,7 @@ func _on_Timer_timeout():
 			robot.position = position 
 			get_parent().add_child(robot)
 		if grenademan_spawn:
-			var grenademan = robot_scene.instance()
+			var grenademan = grenade_scene.instance()
 			grenademan.position = position 
 			get_parent().add_child(grenademan)
 		if sniper_spawn:
