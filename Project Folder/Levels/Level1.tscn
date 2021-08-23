@@ -183,6 +183,8 @@ texture = ExtResource( 15 )
 position = Vector2( 507.616, 303.642 )
 compass_controls = true
 face_mouse_control = false
+health = 300
+max_health = 300
 
 [node name="Enemies" type="Node2D" parent="."]
 

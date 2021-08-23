@@ -1,31 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Assets/Weapons/Ammunition/shell.png" type="Texture" id=1]
 
-[sub_resource type="ParticlesMaterial" id=1]
-emission_shape = 1
-emission_sphere_radius = 0.01
-flag_disable_z = true
-direction = Vector3( 0, 100, 0 )
-spread = 17.79
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 169.77
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 500.0
-damping_random = 0.68
-angle = -10.0
-angle_random = 1.0
-
 [node name="Bullet Particles" type="Node2D"]
 
-[node name="Bullet Shells" type="Particles2D" parent="."]
+[node name="Bullet Shells" type="CPUParticles2D" parent="."]
 position = Vector2( 5.513, 0 )
 scale = Vector2( 0.875, 0.801 )
 z_index = 5
 z_as_relative = false
+emitting = false
 amount = 1
 lifetime = 60.0
 one_shot = true
-process_material = SubResource( 1 )
 texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector2( 0, 100 )
+spread = 17.79
+gravity = Vector2( 0, 0 )
+initial_velocity = 169.77
+damping = 500.0
+damping_random = 0.68
+angle = -10.0
+angle_random = 1.0
