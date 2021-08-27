@@ -6,7 +6,7 @@
 
 ### Use WASD keys to move and fire your weapon with the mouse.
 
-### Play and download the [Game on itch.io](https://troldeansigt.itch.io/spinning-barrels) - remeber to go full screen though!
+### Play and download the [Game on itch.io](https://troldeansigt.itch.io/spinning-barrels) - remember to go full screen though!
 
 ![alt text](https://img.itch.zone/aW1nLzY4MDA4NDkucG5n/original/rpfgfz.png)
 
